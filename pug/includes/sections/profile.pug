@@ -1,0 +1,46 @@
+include ../../content/profile-content.pug
+
+section
+	.container
+		h2.u-sr-only= profile.heading
+
+		.profile__flex
+			.profile__flex-1
+				img.profile__img(
+						role='presentation'
+						src='/imgs/profile.jpg')
+				//- .profile__blob
+				//- 	include ../../../svgs/blob-profile.svg
+
+			.card
+				.card__content
+					.card__text
+						each p in profile.text
+							p.card__p !{p}
+
+					.card__btns
+						a.btn(
+								aria-label= profile.actions.github.ariaLabel
+								href= profile.actions.github.url
+								target='_blank')
+							span(aria-hidden='true')
+								include ../../../svgs/github.svg
+						a.btn(
+								aria-label= profile.actions.gitlab.ariaLabel
+								href= profile.actions.gitlab.url
+								target='_blank')
+							span(aria-hidden='true')
+								include ../../../svgs/gitlab.svg
+						a.btn(
+								aria-label= profile.actions.linkedIn.ariaLabel
+								href= profile.actions.linkedIn.url
+								target='_blank')
+							span(aria-hidden='true')
+								include ../../../svgs/linked-in.svg
+						a.btn(
+								aria-label=profile.actions.resume.ariaLabel
+								download=profile.actions.resume.fileName
+								href='resume.pdf'
+								title= profile.actions.resume.title)
+							span(aria-hidden='true')
+								include ../../../svgs/resume.svg

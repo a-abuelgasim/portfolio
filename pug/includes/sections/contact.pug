@@ -1,0 +1,27 @@
+include ../../content/contact-content.pug
+
+section
+	.container.container--narrow
+		h2.section-heading.u-sr-only
+			span Contact
+
+		.card
+			.card__content
+				each p in contact.text
+					.card__p= p
+
+				.card__btns
+					a.btn(
+							aria-label='Contact me on Linked In'
+							href='https://linkedin.com/in/a-abuelgasim'
+							target='_blank'
+							title='LinkedIn')
+						span(aria-hidden='true')
+							include ../../../svgs/linked-in.svg
+					a.btn(
+							aria-label='Send me an e-mail'
+							href='mailto:a.abuelgasim2023@gmail.com'
+							target='_blank'
+							title='E-mail')
+						span(aria-hidden='true')
+							include ../../../svgs/email.svg

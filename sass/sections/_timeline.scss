@@ -1,0 +1,105 @@
+@use 'sass:map';
+@use 'sass:math';
+@use '../common/base';
+@use '../common/constants' as c;
+@use '../common/mixins' as *;
+@use '../components/container';
+
+
+.timeline {
+	$dot-size: 30px;
+	$line-color: var(--color-accent);
+	$line-gutter-mobile: map.get(c.$spaces, lg);
+	$line-left: 30px;
+	$line-thickness: 6px;
+	$line-thickness-half: math.div($line-thickness, 2);
+	$line-to-card-gap: map.get(c.$spaces, lg);
+	$line-top: 30px;
+	$switch-bp: 800px;
+
+	&__container {
+		position: relative;
+
+		@include mq($until: $switch-bp) {
+			padding-left: $line-gutter-mobile;
+		}
+	}
+
+	&__line {
+		background: $line-color;
+		bottom: -#{base.$section-vertical-padding};
+		left: var(--timeline-line-left, #{math.div($line-gutter-mobile, 2) - $line-thickness-half});
+		position: absolute;
+		top: $line-top;
+		width: $line-thickness;
+
+		@include mq($switch-bp) {
+			--timeline-line-left: calc(50% - #{$line-thickness-half});
+		}
+	}
+
+	&__grid {
+		display: grid;
+		gap: var(--timeline-grid-gap, #{map.get(c.$spaces, lg)});
+
+		@include mq($switch-bp) {
+			--timeline-grid-gap: #{$line-to-card-gap ($line-to-card-gap * 2)};
+
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	&__card {
+		align-self: flex-start;
+		grid-row: span var(--timeline-item-row-span, auto);
+		position: relative;
+
+		&--left {
+			@include mq($switch-bp) {
+				--timeline-item-line-left: calc(100% + 1px);
+				--timeline-item-dot-translate-x: #{$line-to-card-gap - math.div($dot-size, 2)};
+
+				@include box-shadow($mirror: true);
+			}
+		}
+
+		&--right {
+			@include mq($switch-bp) {
+				margin-top: map.get(c.$spaces, lg);
+			}
+		}
+
+		// timeline item line and dot
+		&::after,
+		&::before {
+			--timeline-item-distance-to-line: #{math.div($line-gutter-mobile, 2)};
+
+			content: '';
+			left: var(--timeline-item-line-left, calc(var(--timeline-item-distance-to-line) * -1));
+			position: absolute;
+			top: $line-top;
+
+			@include mq($switch-bp) {
+				--timeline-item-distance-to-line: #{$line-to-card-gap};
+			}
+		}
+
+		// timeline item line
+		&::before {
+			background: $line-color;
+			height: $line-thickness;
+			top: $line-top;
+			transform: translateY(-50%);
+			width: calc(var(--timeline-item-distance-to-line) - 1px);
+		}
+
+		// timeline item dot
+		&::after {
+			@include svg-mask(var(--color-light));
+
+			aspect-ratio: 1 / 1;
+			transform: translate(var(--timeline-item-dot-translate-x, -50%), -50%);
+			width: $dot-size;
+		}
+	}
+}

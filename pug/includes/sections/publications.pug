@@ -1,0 +1,40 @@
+include ../../content/publications-content.pug
+include ../mixins/img.pug
+
+
+//- MIXIN
+mixin publication(publication)
+	.card
+		+img(publication.img, 'publications', 'card__img')
+
+		.card__content
+			h3.card__heading= publication.title
+
+			if publication.tags && publication.tags.length > 0
+				ul.card__pills(aria-labelledby='showcase-pills-title')
+					each tag in publication.tags
+						li.pill= tag
+
+			if publication.text.length > 0
+				.card__text
+					each p in publication.text
+						p.card__p !{p}
+
+			if publication.url
+				.card__btns
+					a.btn(
+							aria-label='View blog post'
+							href=publication.url
+							target='_blank')
+						span(aria-hidden='true')
+								include ../../../svgs/ext-link.svg
+
+
+section
+	.container.container--wide
+		h2.section-heading
+			span= publicationsHeading
+
+		.publications__grid
+			each publication in publications
+				+publication(publication)

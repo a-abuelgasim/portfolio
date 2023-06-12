@@ -1,0 +1,62 @@
+@use 'sass:map';
+@use '../common/constants' as c;
+@use '../common/mixins' as *;
+@use '../components/card';
+@use '../components/container';
+
+.skills {
+	$card-width: 250px;
+	$cards-total: 3;
+	$switch-gap: map.get(c.$spaces, xs);
+	$switch-2-gap: map.get(c.$spaces, md);
+	$switch-bp: container.$side-padding-tablet + ($switch-gap * ($cards-total - 1)) + ($card-width * $cards-total);
+	$switch-2-bp: container.$side-padding-tablet + ($switch-2-gap * ($cards-total - 1)) + ($card-width * $cards-total);
+
+	&__grid {
+		display: grid;
+		gap: var(--skills-gap, map.get(c.$spaces, md));
+		grid-template-columns: repeat(var(--skills-columns, 1), $card-width);
+		justify-content: center;
+
+		@include mq($switch-bp) {
+			--skills-columns: #{$cards-total};
+			--skills-gap: #{$switch-gap}
+		}
+
+		@include mq($switch-2-bp) {
+			--skills-gap: #{$switch-2-gap}
+		}
+	}
+
+	&__card {
+		width: $card-width;
+
+		&-heading {
+			align-items: center;
+			display: flex;
+			height: card.$heading-line-height * 2;
+			justify-content: center;
+			text-align: center;
+		}
+	}
+
+	&__list-item {
+		align-items: center;
+		display: flex;
+		font-size: 1.8rem;
+		font-weight: 600;
+		gap: 1em;
+		white-space: nowrap;
+
+		&:not(:last-of-type) {
+			margin-bottom: map.get(c.$spaces, xs);
+		}
+
+		&-icon {
+			$size: 1.75em;
+
+			flex-shrink: 0;
+			width: $size;
+		}
+	}
+}

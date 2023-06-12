@@ -1,0 +1,77 @@
+include ../../content/showcase-content.pug
+include ../mixins/img.pug
+
+
+//- MIXINS
+mixin showcase-item(showcaseItem, featured=false)
+	.showcase-item(class=featured && 'showcase-item--featured')
+		if showcaseItem.url
+			a.showcase-item__img-container(
+					aria-hidden='true'
+					href=showcaseItem.url
+					target='_blank')
+				+img(showcaseItem.img, 'showcase', 'showcase-item__img')
+
+		else
+			.showcase-item__img-container
+				+img(showcaseItem.img, 'showcase', 'showcase-item__img')
+
+		.showcase-item__card.card
+			.card__content
+				h3.showcase-item__title.card__heading= showcaseItem.title
+
+				if showcaseItem.tags && showcaseItem.tags.length > 0
+					ul.card__pills(aria-labelledby='showcase-pills-title')
+						each tag in showcaseItem.tags
+							li.pill= tag
+
+				each p in showcaseItem.text
+					p.card__p !{p}
+
+				if showcaseItem.url || showcaseItem.githubUrl || showcaseItem.gitlabUrl
+					.card__btns
+						if showcaseItem.githubUrl
+							a.btn(
+									aria-label='View repo on GitHub'
+									href=showcaseItem.githubUrl
+									target='_blank'
+									title='GitHub')
+								span(aria-hidden='true')
+									include ../../../svgs/github.svg
+
+						if showcaseItem.gitlabUrl
+							a.btn(
+									aria-label='View repo on GitLab'
+									href=showcaseItem.gitlabUrl
+									target='_blank')
+								span(aria-hidden='true')
+									include ../../../svgs/gitlab.svg
+
+						if showcaseItem.url
+							a.btn(
+									aria-label='View project'
+									href=showcaseItem.url
+									target='_blank')
+								span(aria-hidden='true')
+									include ../../../svgs/ext-link.svg
+
+
+//- HTML
+section
+	.container
+		h2.section-heading
+			span Showcase
+
+		.showcase__intro
+			each showcaseIntroP in showcaseIntro
+				p !{showcaseIntroP}
+
+		p#showcase-pills-title.u-display-none Keywords
+
+		.showcase-items.showcase-items--featured
+			each showcaseItem in featuredShowcases
+				+showcase-item(showcaseItem, true)
+
+		.showcase-items
+			each showcaseItem in showcases
+				+showcase-item(showcaseItem)
