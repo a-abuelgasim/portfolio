@@ -1,0 +1,43 @@
+{
+	"name": "Ahmed Abuelgasim",
+	"profile": {
+		"occupation": "Software engineer",
+		"speciality": "Front end",
+		"title": "Dr."
+	},
+	"location": {
+		"lat": 43.47,
+		"lng": -79.69
+	},
+	"websites": {
+		"github": "https://github.com/a-abuelgasim",
+		"linked-in": "https://linkedin.com/in/a-abuelgasim"
+	},
+	"skills": {
+		"frameworks": [
+			"React",
+			"Angular",
+			"AngularDart",
+			"Vue",
+			"AngularJS",
+			"Node.js",
+			"Django",
+			"SASS"
+		],
+		"languages": [
+			"TypeScript",
+			"JavaScript",
+			"Dart",
+			"Python",
+			"bash",
+			"CSS",
+			"HTML"
+		],
+		"testing-qa": [
+			"Cypress",
+			"Jest",
+			"Jasmine",
+			"DevOps"
+		]
+	}
+}

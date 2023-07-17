@@ -1,0 +1,24 @@
+include ../../content/hero-content.pug
+
+
+section.hero
+  .hero__container.container.container--wide
+    .hero__text
+      h1.hero__title
+        span= `${hero.title}`
+
+        img.hero__title-img(
+            role="presentation"
+            src="/svgs/hand.svg")
+
+      p.hero__subtitle !{hero.subtitle}
+
+      .hero__list
+        each listItem in hero.list
+          p.hero__list-item= listItem
+
+    .hero__laptop
+      img(
+          src="/imgs/laptop.png"
+          role="presentation"
+      )

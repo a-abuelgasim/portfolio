@@ -1,0 +1,108 @@
+@use 'sass:map';
+@use '../common/mixins' as *;
+@use '../common/constants' as c;
+@use '../common/colors';
+
+.showcase {
+	$switch-bp: 800px;
+
+	&__intro {
+		font-size: 1.9rem;
+		font-weight: 600;
+		margin: 0 auto map.get(c.$spaces, xl);
+		max-width: 700px;
+
+		p:not(last-of-type) {
+			margin-bottom: map.get(c.$spaces, xs);
+		}
+	}
+
+	&-items {
+		$gap: map.get(c.$spaces, xl);
+
+		align-items: center;
+		display: flex;
+		flex-direction: column;
+		gap: $gap;
+
+		&--featured {
+			margin-bottom: $gap;
+		}
+	}
+
+	&-item {
+		align-items: center;
+		display: flex;
+		flex-direction: var(--showcase-item-flex-direction, column);
+
+		&:not(&--featured) {
+			@include mq($until: $switch-bp) {
+				max-width: 550px;
+			}
+
+			@include mq($switch-bp) {
+				--showcase-item-img-container-flex-basis: 60%;
+
+				&:nth-of-type(even) {
+					--showcase-item-card-margin: 0 -#{map.get(c.$spaces, md)} 0 0;
+					--showcase-item-flex-direction: row-reverse;
+				}
+
+				&:nth-of-type(odd) {
+					--showcase-item-card-margin: 0 0 0 -#{map.get(c.$spaces, md)};
+					--showcase-item-flex-direction: row;
+				}
+			}
+
+			@include mq(desktop) {
+				--showcase-item-img-container-flex-basis: 55%;
+			}
+		}
+
+		&--featured {
+			max-width: 800px;
+		}
+
+		&__img {
+			border-radius: c.$border-radius;
+			display: block;
+			image-orientation: none;
+			width: 100%;
+
+			&-container {
+				flex: 0 0 var(--showcase-item-img-container-flex-basis, 0);
+				position: relative;
+
+				&:hover,
+				&:focus {
+					&::after {
+						--showcase-item-img-before-opacity: 1;
+					}
+				}
+
+				&:focus {
+					outline: none;
+				}
+
+				@at-root a#{&} {
+					&::after {
+						background: url('/svgs/ext-link.svg') no-repeat center/30px 30px rgba(colors.$black, .6);
+						border-radius: c.$border-radius;
+						content: '';
+						inset: 0;
+						opacity: var(--showcase-item-img-before-opacity, 0);
+						position: absolute;
+						transition: opacity c.$transition;
+					}
+				}
+			}
+		}
+
+		&__card {
+			margin: var(--showcase-item-card-margin, -#{map.get(c.$spaces, md)} 0 0 0);
+			max-width: 95%;
+			position: relative;
+			z-index: 1;
+		}
+	}
+}

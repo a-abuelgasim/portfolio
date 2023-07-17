@@ -1,0 +1,26 @@
+include ../../content/skills-content.pug
+
+//- Mixins
+mixin skillsGroup(title, skills)
+	.skills__card.card
+		.card__content
+			h3.skills__card-heading.card__heading= title
+			ul
+				each skill in skills
+					li.skills__list-item
+						img.skills__list-item-icon(
+								role="presentation"
+								src=`/svgs/skills/${skill.icon}.svg`)
+						span= skill.name
+
+
+//- HTML
+section
+	.container
+		h2.section-heading
+			span Skills
+
+		.skills__grid
+			+skillsGroup('Frameworks & Libraries', skills.frameworks)
+			+skillsGroup('Languages', skills.languages)
+			+skillsGroup('Testing & QA', skills.qa)

@@ -1,0 +1,9 @@
+@use '../common/mixins' as *;
+
+.pill {
+	@include svg-mask-item(var(--color-light));
+
+	color: var(--color-dark);
+	font-size: 1.5rem;
+	font-weight: 700;
+}
