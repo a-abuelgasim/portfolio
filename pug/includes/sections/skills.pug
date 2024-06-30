@@ -16,11 +16,14 @@ mixin skillsGroup(title, skills)
 
 //- HTML
 section
-	.container
+	.container.container--wide
 		h2.section-heading
 			span Skills
 
 		.skills__grid
-			+skillsGroup('Frameworks & Libraries', skills.frameworks)
-			+skillsGroup('Languages', skills.languages)
-			+skillsGroup('Testing & QA', skills.qa)
+			.skills__group
+				+skillsGroup('Frameworks & Libraries', skills.frameworks)
+				+skillsGroup('Languages', skills.languages)
+			.skills__group
+				+skillsGroup('Testing', skills.testing)
+				+skillsGroup('Other', skills.other)

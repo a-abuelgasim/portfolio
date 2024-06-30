@@ -5,30 +5,17 @@
 @use '../components/container';
 
 .skills {
-	$card-width: 250px;
-	$cards-total: 3;
-	$switch-gap: map.get(c.$spaces, xs);
-	$switch-2-gap: map.get(c.$spaces, md);
-	$switch-bp: container.$side-padding-tablet + ($switch-gap * ($cards-total - 1)) + ($card-width * $cards-total);
-	$switch-2-bp: container.$side-padding-tablet + ($switch-2-gap * ($cards-total - 1)) + ($card-width * $cards-total);
-
-	&__grid {
-		display: grid;
+	&__grid,
+	&__group {
+		display: flex;
+		flex-wrap: wrap;
 		gap: var(--skills-gap, map.get(c.$spaces, md));
-		grid-template-columns: repeat(var(--skills-columns, 1), $card-width);
 		justify-content: center;
-
-		@include mq($switch-bp) {
-			--skills-columns: #{$cards-total};
-			--skills-gap: #{$switch-gap}
-		}
-
-		@include mq($switch-2-bp) {
-			--skills-gap: #{$switch-2-gap}
-		}
 	}
 
 	&__card {
+		$card-width: 230px;
+
 		width: $card-width;
 
 		&-heading {

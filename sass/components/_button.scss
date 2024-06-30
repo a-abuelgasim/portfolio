@@ -20,8 +20,8 @@
 		--btn-size: 55px;
 	}
 
-	&:hover,
-	&:focus {
+	&:focus-visible,
+	&:hover {
 		background-color: var(--color-focus);
 		color: var(--color-dark);
 		outline: none;

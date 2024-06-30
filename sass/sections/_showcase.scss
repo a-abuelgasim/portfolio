@@ -6,16 +6,16 @@
 .showcase {
 	$switch-bp: 800px;
 
-	&__intro {
-		font-size: 1.9rem;
-		font-weight: 600;
-		margin: 0 auto map.get(c.$spaces, xl);
-		max-width: 700px;
+	// &__intro {
+	// 	font-size: 1.9rem;
+	// 	font-weight: 600;
+	// 	margin: 0 auto map.get(c.$spaces, xl);
+	// 	max-width: 700px;
 
-		p:not(last-of-type) {
-			margin-bottom: map.get(c.$spaces, xs);
-		}
-	}
+	// 	p:not(last-of-type) {
+	// 		margin-bottom: map.get(c.$spaces, xs);
+	// 	}
+	// }
 
 	&-items {
 		$gap: map.get(c.$spaces, xl);
