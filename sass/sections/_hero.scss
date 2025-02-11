@@ -6,7 +6,6 @@
 
 .hero {
 	$switch-bp: 750px;
-	$border-radius: 25px;
 
 	background: linear-gradient(
 		180deg,
@@ -18,7 +17,7 @@
 
 	&__rectangle {
 		background: var(--color-secondary);
-		border-radius: $border-radius;
+		border-radius: 30px;
 		height: 200px;
 		inset:
 			var(--hero-rectangle-top, auto)
@@ -47,7 +46,7 @@
 
 		background: var(--color-bg-1);
 		border: 1px solid var(--color-secondary);
-		border-radius: $border-radius;
+		border-radius: c.$border-radius;
 		padding: var(--hero-card-padding, 60px);
 		position: relative; // needed to sit above rectangles
 
