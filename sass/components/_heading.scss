@@ -18,12 +18,12 @@
 	}
 
 	&__dot {
-		$height: 3px;
+		$height: 4px;
 
 		background: var(--color-tertiary);
 		border-radius: $height;
 		height: $height;
-		width: var(--heading-dot-width, 5px);
+		width: var(--heading-dot-width, 6px);
 
 		&--long {
 			--heading-dot-width: 50px;

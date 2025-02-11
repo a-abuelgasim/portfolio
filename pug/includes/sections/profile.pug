@@ -1,38 +1,21 @@
+include ../mixins/heading.pug
 include ../../content/profile-content.pug
 
 section
-	.container
-		h2.u-sr-only= profile.heading
+	.container.container--md
+		+heading(
+			1,
+			profile.heading
+		)
 
 		.profile__flex
 			.profile__flex-1
-				img.profile__img(
-						role='presentation'
-						src='/imgs/profile.jpg')
+				each p in profile.text
+					p.profile__p !{p}
 
-			.card
-				.card__content
-					.card__text
-						each p in profile.text
-							p.card__p !{p}
-
-					.card__btns
-						a.btn(
-								aria-label= profile.actions.github.ariaLabel
-								href= profile.actions.github.url
-								target='_blank')
-							span(aria-hidden='true')
-								include ../../../svgs/github.svg
-						a.btn(
-								aria-label= profile.actions.linkedIn.ariaLabel
-								href= profile.actions.linkedIn.url
-								target='_blank')
-							span(aria-hidden='true')
-								include ../../../svgs/linked-in.svg
-						a.btn(
-								aria-label=profile.actions.resume.ariaLabel
-								download=profile.actions.resume.fileName
-								href='resume.pdf'
-								title= profile.actions.resume.title)
-							span(aria-hidden='true')
-								include ../../../svgs/resume.svg
+			.profile__flex-2
+				.profile__img-container
+					img(
+						role="presentation"
+						src="/imgs/projects.png"
+					)
