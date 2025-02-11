@@ -1,14 +1,23 @@
 $black: #020911;
+$blue-dark: #24344b;
+$blue-mid: #274472;
+$blue: #bcd2ee;
+$white: #fff;
+$white-blue: #f9f8fe;
+$pink: #d8315b;
+// $peach: #ffc49b;
+// $peach: #F1A7AD;
+$peach: #FFCFAD;
 
 :root {
-	--color-accent: #d8315b;
-	--color-accent-light: #ffc49b;
-	--color-black: #{$black};
-	--color-dark: #24344b;
-	--color-light: #bcd2ee;
-	--color-main: #274472;
-	--color-white: #fff;
-	--color-text: var(--color-dark);
-	--color-text-inv: var(--color-white);
-	--color-focus: var(--color-accent-light);
+	--color-bg-1: #{$white};
+	--color-bg-2: #{$white-blue};
+	--color-primary: #{$blue-mid};
+	--color-secondary: #{$blue};
+	--color-tertiary: #{$peach};
+	--color-accent: #{$pink};
+	--color-text: #{$blue-dark};
+	--color-text-inv: #{$white};
+	--color-interactive: var(--color-accent);
+	--color-interacting: var(--color-tertiary);
 }

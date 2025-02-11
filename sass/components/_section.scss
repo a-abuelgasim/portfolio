@@ -1,0 +1,16 @@
+@use 'sass:map';
+@use '../common/constants' as c;
+
+$section-pt: map.get(c.$spaces, lg);
+$section-pb: map.get(c.$spaces, xl);
+
+section {
+	border: 1px dashed #000;
+	padding: #{$section-pt} 0 #{$section-pb};
+
+	&:nth-of-type(even) {
+		--card-bg-color: var(--color-bg-2);
+
+		background: var(--color-bg-2);
+	}
+}

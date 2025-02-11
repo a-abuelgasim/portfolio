@@ -8,17 +8,19 @@
 @use './components/button';
 @use './components/card';
 @use './components/container';
+@use './components/link';
 @use './components/pill';
+@use './components/section';
 
 
 /* SECTION */
-@use './sections/footer';
+// @use './sections/footer';
 @use './sections/hero';
-@use './sections/profile';
-@use './sections/showcase';
-@use './sections/publications';
-@use './sections/skills';
-@use './sections/timeline';
+// @use './sections/profile';
+// @use './sections/showcase';
+// @use './sections/publications';
+// @use './sections/skills';
+// @use './sections/timeline';
 
 
 /* UTILS */

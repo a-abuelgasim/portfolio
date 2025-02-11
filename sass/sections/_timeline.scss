@@ -1,9 +1,9 @@
 @use 'sass:map';
 @use 'sass:math';
-@use '../common/base';
 @use '../common/constants' as c;
 @use '../common/mixins' as *;
 @use '../components/container';
+@use '../components/section';
 
 
 .timeline {
@@ -27,7 +27,7 @@
 
 	&__line {
 		background: $line-color;
-		bottom: -#{base.$section-vertical-padding};
+		bottom: -#{section.$section-pb};
 		left: var(--timeline-line-left, #{math.div($line-gutter-mobile, 2) - $line-thickness-half});
 		position: absolute;
 		top: $line-top;

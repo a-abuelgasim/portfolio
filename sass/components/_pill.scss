@@ -1,9 +1,10 @@
-@use '../common/mixins' as *;
+@use '../common/typography' as *;
 
 .pill {
-	@include svg-mask-item(var(--color-light));
+	@include type-caption;
 
-	color: var(--color-dark);
-	font-size: 1.5rem;
-	font-weight: 700;
+	background-color: var(--color-secondary);
+	border-radius: 1em;
+	color: var(--color-text);
+	padding: .35em .7em;
 }
