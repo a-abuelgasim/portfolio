@@ -14,7 +14,7 @@ $max-width-lg: 1280px;
 	--container-side-padding: #{$side-padding-mobile};
 
 	margin: 0 auto;
-	max-width: var(--container-max-width, #{$max-width-md});
+	max-width: var(--container-max-width);
 	padding: 0 var(--container-side-padding);
 	width: 100%;
 
@@ -28,6 +28,10 @@ $max-width-lg: 1280px;
 
 	&--sm {
 		--container-max-width: calc(#{$max-width-sm} + (var(--container-side-padding) * 2));
+	}
+
+	&--md {
+		--container-max-width: calc(#{$max-width-md} + (var(--container-side-padding) * 2));
 	}
 
 	&--lg {

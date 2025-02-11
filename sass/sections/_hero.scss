@@ -1,97 +1,128 @@
 @use 'sass:map';
 @use '../common/constants' as c;
 @use '../common/mixins' as *;
+@use '../common/typography' as type;
+
 
 .hero {
-	$switch-bp: wide;
+	$switch-bp: 750px;
+	$border-radius: 25px;
 
-	padding: (map.get(c.$spaces, lg) * 2) 0;
+	background: linear-gradient(
+		180deg,
+		var(--color-bg-1) 0%,
+		var(--color-bg-2) 50%
+	);
+	padding-top: map.get(c.$spaces, xl);
+	position: relative;
 
-	@include mq($switch-bp) {
-		height: 75vh;
-		max-height: 1200px;
-	}
+	&__rectangle {
+		background: var(--color-secondary);
+		border-radius: $border-radius;
+		height: 200px;
+		inset:
+			var(--hero-rectangle-top, auto)
+			var(--hero-rectangle-right, auto)
+			var(--hero-rectangle-bottom, auto)
+			var(--hero-rectangle-left, auto);
+		position: absolute;
+		transform: rotate(var(--hero-rectangle-angle));
+		width: 200px;
 
-	&__container {
-		align-items: center;
-		display: flex;
-		gap: var(--hero-container-gap, map.get(c.$spaces, lg) * 2);
-		height: 100%;
-
-		@include mq($until: $switch-bp) {
-			flex-direction: column;
+		&--1 {
+			--hero-rectangle-angle: -55deg;
+			--hero-rectangle-bottom: 100px;
+			--hero-rectangle-left: -160px;
 		}
 
-		@include mq($switch-bp) {
-			--hero-container-gap: #{map.get(c.$spaces, lg)};
-
-			justify-content: center;
+		&--2 {
+			--hero-rectangle-angle: -20deg;
+			--hero-rectangle-right: -150px;
+			--hero-rectangle-top: 120px;
 		}
 	}
 
-	&__text {
-		display: flex;
-		flex: 1 0 0;
-		flex-direction: column;
-		max-width: var(--hero-text-max-width, 350px);
-		text-align: center;
+	&__card {
+		@include box-shadow($level: 3);
+
+		background: var(--color-bg-1);
+		border: 1px solid var(--color-secondary);
+		border-radius: $border-radius;
+		padding: var(--hero-card-padding, 60px);
+		position: relative; // needed to sit above rectangles
 
 		@include mq(tablet) {
-			--hero-text-max-width: 425px;
+			--hero-card-padding: 60px 80px;
+		}
+	}
+
+	&__flex {
+		align-items: center;
+		display: flex;
+		gap: var(--hero-flex-gap, #{map.get(c.$spaces, sm)});
+
+		@include mq($until: $switch-bp) {
+			flex-direction: var(--hero-flex-direction, column-reverse);
 		}
 
 		@include mq($switch-bp) {
-			justify-content: center;
+			--hero-flex-gap: #{map.get(c.$spaces, md)};
+		}
+
+		@include mq(desktop) {
+			--hero-flex-gap: #{map.get(c.$spaces, lg)};
 		}
 	}
 
 	&__title {
-		align-items: baseline;
-		display: flex;
-		flex-wrap: wrap-reverse;
-		font-size: 3.5rem;
-		gap: map.get(c.$spaces, xs);
-		justify-content: center;
-
-		&-img {
-			// Animation and CSS from https://jarv.is/notes/css-waving-hand-emoji/
-			animation-duration: 2.5s;
-			animation-name: wave-animation;
-			height: 1.3em;
-			position: relative;
-			top: .25em;
-			transform-origin: 70% 70%;
-		}
+		@include type.hand-2;
 	}
 
-	&__subtitle {
-		font-size: 2.4rem;
-		margin: var(--hero-subtitle-margin, map.get(c.$spaces, sm) 0 map.get(c.$spaces, md));
+	&__wave {
+		// Animation and CSS from https://jarv.is/notes/css-waving-hand-emoji/
+		animation-duration: 2.5s;
+		animation-name: wave-animation;
+		height: 1.2em;
+		margin-right: .3em;
+		position: relative;
+		top: .25em;
+		transform-origin: 70% 70%;
+	}
+
+	&__name {
+		font-size: 3rem;
+		font-weight: 700;
+		margin: 15px 0;
+	}
+
+	&__text {
+		font-size: 1.8rem;
+		margin-bottom: 30px;
+	}
+
+	&__flex-2 {
+		display: grid;
+		place-items: center;
+	}
+
+	&__img {
+		@include box-shadow($level: 2);
+
+		border: 6px solid var(--color-tertiary);
+		border-radius: 50%;
+		width: var(--hero-img-width, 250px);
 
 		@include mq(desktop) {
-			--hero-subtitle-margin: #{map.get(c.$spaces, md) 0 map.get(c.$spaces, lg)};
+			--hero-img-width: 300px;
 		}
 	}
 
-	&__list {
+	&__actions {
 		display: flex;
-		font-weight: 700;
 		gap: map.get(c.$spaces, sm);
 
-		&-item {
-			@include svg-mask-item;
-
-			display: flex;
-			text-align: center;
-		}
-	}
-
-	&__laptop {
-		max-width: 800px;
-
-		img {
-			display: block;
-			width: 100%;
+		.btn {
+			--btn-size: 40px;
 		}
 	}
 }

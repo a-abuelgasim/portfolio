@@ -5,15 +5,14 @@
 .btn {
 	--btn-size: 35px;
 
-	align-items: center;
 	background-color: var(--color-interactive);
 	border-radius: 50%;
 	border-width: 0;
 	color: var(--color-text-inv);
 	cursor: pointer;
-	display: flex;
+	display: grid;
 	height: var(--btn-size);
-	justify-content: center;
+	place-items: center;
 	transition: color c.$transition, background-color c.$transition;
 	width: var(--btn-size);
 
@@ -24,7 +23,7 @@
 	&:focus-visible,
 	&:hover {
 		background-color: var(--color-interacting);
-		color: var(--color-text-inv);
+		color: var(--color-interactive);
 		outline: none;
 	}
 
@@ -33,7 +32,7 @@
 
 		height: var(--btn-svg-size);
 		position: relative;
-		top: .125em;
+		vertical-align: middle;
 		width: var(--btn-svg-size);
 	}
 }
