@@ -2,30 +2,54 @@
 @use '../common/constants' as c;
 @use '../common/mixins' as *;
 
-.profile {
-	$switch-bp: 800px;
 
+.profile {
 	&__flex {
 		align-items: center;
 		display: flex;
-		gap: map.get(c.$spaces, lg);
+		gap: 80px;
 
-		@include mq($until: $switch-bp) {
+		@include mq($until: desktop) {
 			flex-direction: column;
 		}
 
 		&-1 {
-			aspect-ratio: 1 / 1;
-			background: url('/svgs/blob-profile.svg') no-repeat center/contain;
-			display: flex;
-			flex-shrink: 0;
-			justify-content: center;
-			padding: 25px;
+			flex: 4 0 0;
+		}
+
+		&-2 {
+			flex: 3 0 0;
 		}
 	}
 
-	&__img {
-		border-radius: 50%;
-		width: 220px;
+	&__p {
+		text-align: justify;
+
+		&:not(:last-of-type) {
+			margin-bottom: map.get(c.$spaces, xs);
+		}
+	}
+
+	&__img-container {
+		--profile-img-width: 450px;
+
+		position: relative;
+
+		img {
+			position: relative;
+			width: var(--profile-img-width);
+		}
+
+		&::before {
+			aspect-ratio: 4 / 3;
+			background: var(--color-secondary);
+			border-radius: c.$border-radius;
+			content: '';
+			left: -20px;
+			position: absolute;
+			top: -30px;
+			transform: rotate(-2deg);
+			width: calc(var(--profile-img-width) * 1.1);
+		}
 	}
 }

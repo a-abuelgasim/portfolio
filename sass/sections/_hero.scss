@@ -10,8 +10,8 @@
 
 	background: linear-gradient(
 		180deg,
-		var(--color-bg-1) 0%,
-		var(--color-bg-2) 50%
+		var(--color-bg-1) 30%,
+		var(--color-bg-2) 100%
 	);
 	padding-top: map.get(c.$spaces, xl);
 	position: relative;
@@ -62,7 +62,7 @@
 		gap: var(--hero-flex-gap, #{map.get(c.$spaces, sm)});
 
 		@include mq($until: $switch-bp) {
-			flex-direction: var(--hero-flex-direction, column-reverse);
+			flex-direction: column-reverse;
 		}
 
 		@include mq($switch-bp) {
