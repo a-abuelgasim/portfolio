@@ -1,10 +1,11 @@
 include ../../content/publications-content.pug
+include ../mixins/heading.pug
 include ../mixins/img.pug
 
 
 //- MIXIN
 mixin publication(publication)
-	.card
+	.card.publications__card
 		+img(publication.img, 'publications', 'card__img')
 
 		.card__content
@@ -31,10 +32,12 @@ mixin publication(publication)
 
 
 section
-	.container.container--wide
-		h2.section-heading
-			span= publicationsHeading
+	.container.container--lg
+		+heading(
+			4,
+			publications.heading
+		)
 
 		.publications__grid
-			each publication in publications
+			each publication in publications.publications
 				+publication(publication)
