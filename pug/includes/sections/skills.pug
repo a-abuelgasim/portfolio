@@ -1,6 +1,7 @@
 include ../mixins/heading.pug
 include ../../content/skills-content.pug
 
+
 //- Mixins
 mixin skillsGroup(title, skills)
 	.skills__card.card
@@ -18,13 +19,13 @@ mixin skillsGroup(title, skills)
 
 //- HTML
 section
-	.container
+	.container.container--md
 		+heading(
 			2,
 			skills.heading
 		)
 
-	.skills__grid-container.container
+	.skills__grid-container.container.container--lg
 		.skills__grid
 			+skillsGroup('Libraries & Frameworks', skills.frameworks)
 			+skillsGroup('Languages', skills.languages)

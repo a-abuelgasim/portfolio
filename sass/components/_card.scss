@@ -12,7 +12,6 @@ $heading-line-height: 1.3em;
 	$icon-size: 5rem;
 
 	background-color: var(--card-bg-color, var(--color-bg-1));
-	// border: 1px solid rgba(colors.$black, .3);
 	border-radius: c.$border-radius;
 	display: flex;
 	flex-direction: column;
@@ -79,11 +78,11 @@ $heading-line-height: 1.3em;
 		@include type.heading-2;
 	}
 
-
 	&__pills {
 		display: flex;
 		flex-wrap: wrap;
 		gap: map.get(c.$spaces, xs);
+		margin-bottom: map.get(c.$spaces, sm);
 	}
 
 	&__text {
