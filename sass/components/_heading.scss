@@ -6,6 +6,7 @@
 	align-items: center;
 	display: flex;
 	gap: 30px;
+	justify-content: center;
 	margin-bottom: map.get(c.$spaces, md);
 
 	&__text {

@@ -1,106 +1,107 @@
 -
-	//- Showcase introduction paragraph
-	//- const showcaseIntro = [
-	//- 	`In my current role at <a class="light-link" href="https://p.ota.to" target="_blank">Potato</a> I've created countless digital products, mainly for Google. While this was great for learning new skills, it wasn't great for showcasing them since all the products are covered by non-disclosure agreements.`,
-	//- 	`Instead here are some cool things I worked on in my spare time.`
-	//- ]
-
-	//- Featured showcase items
-	const featuredShowcases = [
-		{
-			githubUrl: `https://github.com/a-abuelgasim/watchlist-angular`,
-			img: {
-				ext: 'png',
-				name: 'watchy',
-				sizes: [
-					360,
-					666,
-					900,
-					1248,
-				],
-			},
-			tags: [
-				`angular`,
-				`jest`,
-				`typescript`,
-			],
-			text: [
-				`Watchy is an app that allows users to create lists of movies and TV shows. It uses TMDB's API to get movie and TV show details and saves the lists locally to indexedDB using <a href="https://dexie.org/" target="_black">Dexie.js</a> so there's no need for user accounts or a back-end server.`,
-				`Although the app is written in Angular, I configured it to run Jest unit tests instead of Jasmine as a personal preference. The app has 100% unit test coverage and I'm currently (Aug 2023) working on end-to-end tests using Cypress.`
-			],
-			title: `Watchy`,
-			url: `https://a-abuelgasim.github.io/watchlist-angular`
+	const showcase = {
+		heading: 'My work',
+		intro: [
+			`Working at <a href="https://p.ota.to" target="_blank">Potato</a> I created countless digital products, mainly for Google. While this was great for learning new skills it wasn't great for showcasing them, since they are all covered by non-disclosure agreements. Instead here are cool things I worked on in my spare time.`
+		],
+		a11y: {
+			pillsLabel: 'Keywords'
 		},
-		{
-			gitlabUrl: `https://gitlab.com/potato-oss/ace/ace`,
-			img: {
-				ext: 'png',
-				name: 'ace',
-				sizes: [
-					360,
-					939,
-					1600,
+		featuredShowcases: [
+			{
+				githubUrl: `https://github.com/a-abuelgasim/watchlist-angular`,
+				img: {
+					ext: 'png',
+					name: 'watchy',
+					sizes: [
+						360,
+						666,
+						900,
+						1248,
+					],
+				},
+				tags: [
+					`angular`,
+					`dexie`,
+					`jest`,
+					`typescript`,
 				],
-			},
-			tags: [
-				`accessibility`,
-				`typescript`,
-				`cypress`,
-				`node.js`,
-			],
-			text: [
-				`ACE is an open-source library of UI components accessible to users who rely on assistive technologies or keyboard navigation. The components conform to W3's <a href="https://www.w3.org/WAI/ARIA/apg/patterns/" target="_blank">WAI-ARIA Authoring Practices</a>. The goal of ACE is to help developers create beautiful and fully inclusive websites.`,
-				`I led the project from concept to publication on <a href="https://www.npmjs.com/package/@potato/ace" target="_blank">npm</a> and use in <a href="https://p.ota.to/" target="_blank">Potato’s website</a> and various Google web apps, and I'm the project maintainer.`,
-				`The components were created using TypeScript and tested extensively using Cypress. I also wrote detailed documentation and use Node.js, Gulp and CI/CD to automatically update the documentation web pages with the latest code and interactive demos of each component.`
-			],
-			title: `Accessible Custom Elements (ACE)`,
-			url: `https://ace.p.ota.to/`
-		},
-		{
-			githubUrl: `https://github.com/a-abuelgasim/six-degrees`,
-			img: {
-				ext: 'png',
-				name: 'six-degrees',
-				sizes: [
-					360,
-					1100,
+				text: [
+					`Watchy is an app that allows users to create lists of movies and TV shows. It uses TMDB&#39;s API to get movie and TV show details and saves the lists locally to indexedDB using <a href='https://dexie.org/'>Dexie.js</a> so there's no need for user accounts or a back-end server.`,
+					`Although the app is written in Angular, I configured it to run Jest unit tests instead of Jasmine as a personal preference. The app has 100% unit test coverage and I'm currently (January 2024) working on end-to-end tests using Cypress.`
 				],
+				title: `Watchy`,
+				url: `https://a-abuelgasim.github.io/watchlist-angular`
 			},
-			tags: [
-				`react`,
-				`typescript`,
-				`vite`,
-			],
-			text: [
-				`6 Degrees is a game written in React and based on the 6 degrees of Kevin Bacon parlour game, where you have to link two actors to each other using movies and other actors.`
-			],
-			title: `6 Degrees`,
-			url: `https://a-abuelgasim.github.io/six-degrees/`
-		},
-	]
-
-	//- Basic showcase items
-	const showcases = [
-		//- {
-		//- 	img: {
-		//- 		ext: 'png',
-		//- 		name: 'yumphoria',
-		//- 		sizes: [
-		//- 			360,
-		//- 			960,
-		//- 			1100,
-		//- 		],
-		//- 	},
-		//- 	tags: [
-		//- 		'javascript',
-		//- 		'wordpress',
-		//- 		'php',
-		//- 	],
-		//- 	text: [
-		//- 		`Yumna is a stand-up comedian, writer and photographer who required a custom-themed WordPress website. Although developed early on in my career I am still proud of the photography page, which has a world map to showcase Yumna's travel photography.`,
-		//- 		`When a WordPress photo album is tagged with a country code, that country is highlighted on the map and becomes a link to the album page. I was especially happy to help Yumna share her photography of the world with the world, since I also love traveling.`,
-		//- 	],
-		//- 	title: `Yumna Mohamed's portfolio`,
-		//- 	url: 'http://yumphoria.ml/photography/',
-		//- }
-	]
+		],
+		showcases: [
+			{
+				gitlabUrl: `https://gitlab.com/potato-oss/ace/ace`,
+				img: {
+					ext: 'png',
+					name: 'ace',
+					sizes: [
+						360,
+						939,
+						1600,
+					],
+				},
+				tags: [
+					`accessibility`,
+					`node.js`,
+					`cypress`,
+					`typescript`,
+				],
+				text: [
+					`ACE is an open-source library of UI components accessible to users who rely on assistive technologies or keyboard navigation. The components have minimal, easily overridden CSS styling, making them compatible with any design system, and conform to W3's <a href="https://www.w3.org/WAI/ARIA/apg/patterns/" target="_blank">WAI-ARIA Authoring Practices</a>. The goal of ACE is to help developers create beautiful and fully inclusive websites.`,
+					`I led the project from concept to publication on <a href="https://www.npmjs.com/package/@potato/ace" target="_blank">npm</a> and use in <a href="https://p.ota.to/" target="_blank">Potato's website</a> and various Google web apps, and I&#39;m the library maintainer.`,
+					`The components were created using TypeScript and tested extensively using Cypress. I also wrote detailed documentation and use Node.js, Gulp and CI/CD to automatically update the documentation web pages with the latest code and interactive demos of each component.`
+				],
+				title: `Accessible Custom Elements (ACE)`,
+				url: `https://ace.p.ota.to/`
+			},
+			{
+				githubUrl: `https://github.com/a-abuelgasim/six-degrees`,
+				img: {
+					ext: 'png',
+					name: 'six-degrees',
+					sizes: [
+						360,
+						1100,
+					],
+				},
+				tags: [
+					`react`,
+					`typescript`,
+					`vite`,
+				],
+				text: [
+					`6 Degrees is a game I created a long time ago when I was first learning React. It's based on the '6 degrees of Kevin Bacon' game, where you have to link an actor to Kevin Bacon using a chain of movies and other actors.`
+				],
+				title: `6 Degrees`,
+				url: `https://a-abuelgasim.github.io/six-degrees/`
+			},
+			//- {
+			//- 	img: {
+			//- 		ext: 'png',
+			//- 		name: 'yumphoria',
+			//- 		sizes: [
+			//- 			360,
+			//- 			960,
+			//- 			1100,
+			//- 		],
+			//- 	},
+			//- 	tags: [
+			//- 		'javascript',
+			//- 		'wordpress',
+			//- 		'php',
+			//- 	],
+			//- 	text: [
+			//- 		`Yumna is a stand-up comedian, writer and photographer who required a custom-themed WordPress website. Although developed early on in my career I am still proud of the photography page, which has a world map to showcase Yumna's travel photography.`,
+			//- 		`When a WordPress photo album is tagged with a country code, that country is highlighted on the map and becomes a link to the album page. I was especially happy to help Yumna share her photography of the world with the world, since I also love traveling.`,
+			//- 	],
+			//- 	title: `Yumna Mohamed's portfolio`,
+			//- 	url: 'http://yumphoria.ml/photography/',
+			//- }
+		]
+	}
