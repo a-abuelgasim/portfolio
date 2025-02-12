@@ -1,103 +1,105 @@
 -
-	const timeline = [
-		{
-			logo: 'workiva.svg',
-			dates: 'Oct 2023 - Present',
-			title: 'Senior Software Developer',
-			subtitle: 'Workiva',
-			url: 'https://workiva.com',
-			text: [
-				`At Workiva I work on developing, maintaining and providing support for a React and Dart component library that aligns with Workiva UI standards.`,
-				`The library is used by internal and external builders to tailor Workiva platform solutions for end users, with customisation of behaviour and style achieved through JSON configurations, allowing builders with limited access or coding experience to create bespoke solutions.`,
-				`As part of the development process I write extensive tests and implement localisation features and accessibility best practices to ensure multiple language support and that WCAG standards are met.`,
-			],
-		},
-		{
-			logo: 'potato.svg',
-			dates: 'Oct 2017 - Mar 2023',
-			title: 'Senior Frontend Developer',
-			subtitle: 'Potato',
-			url: 'https://p.ota.to',
-			text: [
-				`At Potato I developed elegant digital products for prominent clients, mainly Google. My most significant accomplishment to date has to be creating open-source project <a href="https://ace.p.ota.to" target="_blank">ACE</a>, a library of UI components accessible to users who rely on assistive technologies or keyboard navigation.`,
-				`I also architected and led front-end development of a web app for Google that allows companies to assess their digital marketing maturity, allowing the Google Sales team to identify services to help them improve. After a successful launch for the Google Ads team, the product was spun out for Google's News, Retail and Cloud teams. The project lasted over two years and its complexity grew exponentially due to variations in the branding, design & functional requirements of the different stakeholders.`,
-				`Another noteworthy achievement was collaborating with a team at Area120, Google's in-house incubator, to create an AngularDart app. The app allows content creators to build web storefronts and sell digital products and services to their audiences. My work included building a complex dashboard and analytics tools used by creators to understand sales and content performance.`,
-				`As part of the Accessibility Guild, I routinely conducted accessibility audits of projects and implemented improvements to achieve perfect Lighthouse scores. As part of the Quality Guild, I created and maintained GitLab CI/CD templates that are importable into project pipelines to automate deployment to Google Cloud or Firebase and run Lighthouse minimizing regression bugs.`,
-				`I also investigated replacing AngularJS on two major Google projects before its deprecation. I wrote specification documents comparing potential replacements and led the refactoring efforts, which saw performance boosts and improved security.`
-			],
-			rightCol: true,
-			rowSpan: 2,
-		},
-		{
-			logo: 'freelance.svg',
-			dates: 'Apr 2016 - Oct 2017',
-			title: 'Freelance Software Engineer',
-			text: [
-				`I created websites from layouts I designed using sketches, wire-framing and Photoshop. I developed the sites using HTML, CSS, SASS, Javascript & AngularJS, and created custom WordPress themes using PHP to allow for content management.`,
-				`Although my freelance work was primarily for me to learn to code, I also learned a lot about how to collaborate with clients and guide them towards focusing on what they needed over what they wanted.`
-			],
-		},
-		{
-			logo: 'microchip.svg',
-			dates: 'Nov 2012 - Nov 2016',
-			title: 'Nanofabrication Process Engineer',
-			subtitle: 'Southampton NanoFabrication Center',
-			url: 'https://www.southampton-nanofab.com/',
-			text: [
-				`I applied years of cleanroom fabrication experience gained during my PhD to create extremely cool and incredibly tiny devices.`,
-				`Precise planning and organization were vital for timely delivery, and leading multiple, concurrently running projects provided invaluable project management experience. Clear communication and team-work were also essential for successfully collaborating on large projects with colleagues and clients.`
-			],
-		},
-		{
-			logo: 'uos.svg',
-			dates: 'Nov 2008 - Jul 2013',
-			title: 'Electronics Engineering PhD',
-			subtitle: 'University of Southampton',
-			url: 'https://www.southampton.ac.uk/',
-			text: [
-				`For my PhD I increased the resistivity of silicon through deep level doping compensation, acquiring excellent research and analytical skills in the process.`,
-			],
-			rightCol: true,
-		},
-		{
-			logo: 'uos.svg',
-			dates: 'Oct 2003 - Jun 2007',
-			title: `Electronic Engineering Master's degree with First Class Honours`,
-			subtitle: 'University of Southampton',
-			url: 'https://www.southampton.ac.uk/',
-			text: [
-				`As part of my degree I studied software engineering, computer systems engineering & C programming, and used many low-level programming languages like VHDL, Verilog and Assembly.`,
-			],
-		},
-		{
-			logo: 'bilborough.svg',
-			dates: '2001 - 2003',
-			title: `A-Levels`,
-			subtitle: 'Bilborough College',
-			url: 'https://bilborough.ac.uk/',
-			text: [
-				`Computing: <strong>A</strong><br>
-				Further Math: <strong>A</strong><br>
-				Math: <strong>A</strong><br>
-				Electronics: <strong>A</strong>`,
-			],
-			rightCol: true,
-		},
-		{
-			logo: 'uhs.svg',
-			dates: '1999 - 2001',
-			title: `International GCSEs`,
-			subtitle: 'Unity High School',
-			url: 'https://www.unityhighschool.org/',
-			text: [
-				`Physics: <strong>A*</strong><br>
-				Chemistry: <strong>A*</strong><br>
-				Biology: <strong>A*</strong><br>
-				English: <strong>A*</strong><br>
-				Computing: <strong>A</strong><br>
-				Additional Math: <strong>A</strong><br>
-				Math: <strong>A</strong><br>
-				Arabic: <strong>B</strong>`,
-			],
-		},
-	]
+	const timeline = {
+		heading: 'My journey',
+		events: [
+			{
+				logo: 'workiva.svg',
+				dates: 'Oct 2023 - Present',
+				title: 'Senior Software Developer',
+				subtitle: 'Workiva',
+				url: 'https://workiva.com',
+				text: [
+					`I'm currently transitioning Dart components to a microfrontend architecture, rewriting them in React and TypeScript, implementing new design system styling, increasing test coverage and adding end-to-end tests.`,
+					`Prior to this shift, I was involved in the development, maintainance and support of a React and Dart component library that aligns with Workiva's UI standards. The library is used by internal and external builders to tailor Workiva platform solutions for end users, with customisation of behaviour and style achieved through JSON configuration, allowing builders with limited access or coding experience to create bespoke solutions. As part of the development process I wrote extensive tests and implement localisation features and accessibility best practices to ensure multiple language support and that WCAG standards are met.`,
+				],
+			},
+			{
+				logo: 'potato.svg',
+				dates: 'Oct 2017 - Mar 2023',
+				title: 'Senior Frontend Developer',
+				subtitle: 'Potato',
+				url: 'https://p.ota.to',
+				text: [
+					`At Potato I developed elegant digital products for prominent clients, mainly Google. My most significant accomplishment was creating <a href="https://ace.p.ota.to" target="_blank">ACE</a>, an open-source library of UI components accessible to users who rely on assistive technologies or keyboard navigation.`,
+					`Another noteworthy achievement was collaborating with a team at Area120, Google's in-house incubator, to create an AngularDart app. The app allows content creators to build web storefronts and sell digital products and services to their audiences. My work included building a complex dashboard and analytics tools used by creators to understand sales and content performance`,
+					`I also architected and led front-end development of an app for Google, allowing companies to assess their digital marketing maturity and the Google Sales team to identify services to help them improve. After a successful launch for the Google Ads team, the product was spun out for Google's News, Retail and Cloud teams. The project lasted over two years and its complexity grew exponentially due to variations in the branding, design & functional requirements of the different stakeholders.`,
+					`As part of the Accessibility Guild, I routinely conducted accessibility audits of projects and implemented improvements to achieve perfect Lighthouse scores. As part of the Quality Guild, I created and maintained GitLab CI/CD templates that are importable into project pipelines to automate deployment to Google Cloud or Firebase and run Lighthouse minimizing regression bugs.`,
+					`I also investigated replacing AngularJS on two major Google projects before its deprecation. I wrote specification documents comparing potential replacements and led the refactoring efforts, which saw performance boosts and improved security.`
+				],
+				rightCol: true,
+				rowSpan: 2,
+			},
+			{
+				logo: 'freelance.svg',
+				dates: 'Apr 2016 - Oct 2017',
+				title: 'Freelance Software Engineer',
+				text: [
+					`I created websites from layouts I designed using sketches, wire-framing and Photoshop. I developed the sites using HTML, CSS, SASS, Javascript & AngularJS, and created custom WordPress themes using PHP to allow for content management.`,
+					`Although my freelance work was primarily for me to learn to code, I also learned a lot about how to collaborate with clients and guide them towards focusing on what they needed over what they wanted.`
+				],
+			},
+			{
+				logo: 'microchip.svg',
+				dates: 'Nov 2012 - Nov 2016',
+				title: 'Nanofabrication Process Engineer',
+				subtitle: 'Southampton NanoFabrication Center',
+				url: 'https://www.southampton-nanofab.com/',
+				text: [
+					`I applied years of cleanroom fabrication experience gained during my PhD to create extremely cool and incredibly tiny devices.`,
+					`Precise planning and organization were vital for timely delivery, and leading multiple, concurrently running projects provided invaluable project management experience. Clear communication and team-work were also essential for successfully collaborating on large projects with colleagues and clients.`
+				],
+			},
+			{
+				logo: 'uos.svg',
+				dates: 'Nov 2008 - Jul 2013',
+				title: 'Electronics Engineering PhD',
+				subtitle: 'University of Southampton',
+				url: 'https://www.southampton.ac.uk/',
+				text: [
+					`For my PhD I increased the resistivity of silicon through deep level doping compensation, acquiring excellent research and analytical skills in the process.`,
+				],
+				rightCol: true,
+			},
+			{
+				logo: 'uos.svg',
+				dates: 'Oct 2003 - Jun 2007',
+				title: `Electronic Engineering Master's degree with First Class Honours`,
+				subtitle: 'University of Southampton',
+				url: 'https://www.southampton.ac.uk/',
+				text: [
+					`As part of my degree I studied software engineering, computer systems engineering & C programming, and used many low-level programming languages like VHDL, Verilog and Assembly.`,
+				],
+			},
+			{
+				logo: 'bilborough.png',
+				dates: '2001 - 2003',
+				title: `A-Levels`,
+				subtitle: 'Bilborough College',
+				url: 'https://bilborough.ac.uk/',
+				text: [
+					`Computing: <strong>A</strong><br>
+					Further Math: <strong>A</strong><br>
+					Math: <strong>A</strong><br>
+					Electronics: <strong>A</strong>`,
+				],
+				rightCol: true,
+			},
+			{
+				logo: 'uhs.svg',
+				dates: '1999 - 2001',
+				title: `International GCSEs`,
+				subtitle: 'Unity High School',
+				url: 'https://www.unityhighschool.org/',
+				text: [
+					`Physics: <strong>A*</strong><br>
+					Chemistry: <strong>A*</strong><br>
+					Biology: <strong>A*</strong><br>
+					English: <strong>A*</strong><br>
+					Computing: <strong>A</strong><br>
+					Additional Math: <strong>A</strong><br>
+					Math: <strong>A</strong><br>
+					Arabic: <strong>B</strong>`,
+				],
+			},
+		]
+	}
