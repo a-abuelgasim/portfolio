@@ -75,7 +75,9 @@ $heading-line-height: 1.3em;
 	}
 
 	&__subheading {
-		@include type.heading-2;
+		@include type.heading-3;
+
+		font-weight: 700;
 	}
 
 	&__pills {

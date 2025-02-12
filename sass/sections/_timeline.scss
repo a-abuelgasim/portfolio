@@ -7,8 +7,8 @@
 
 
 .timeline {
-	$dot-size: 30px;
-	$line-color: var(--color-accent);
+	$dot-size: 20px;
+	$line-color: var(--color-secondary);
 	$line-gutter-mobile: map.get(c.$spaces, lg);
 	$line-left: 30px;
 	$line-thickness: 6px;
@@ -50,6 +50,8 @@
 	}
 
 	&__card {
+		--card-bg-color: var(--color-bg-1);
+
 		align-self: flex-start;
 		grid-row: span var(--timeline-item-row-span, auto);
 		position: relative;
@@ -58,8 +60,6 @@
 			@include mq($switch-bp) {
 				--timeline-item-line-left: calc(100% + 1px);
 				--timeline-item-dot-translate-x: #{$line-to-card-gap - math.div($dot-size, 2)};
-
-				@include box-shadow($mirror: true);
 			}
 		}
 
@@ -90,14 +90,15 @@
 			height: $line-thickness;
 			top: $line-top;
 			transform: translateY(-50%);
-			width: calc(var(--timeline-item-distance-to-line) - 1px);
+			width: var(--timeline-item-distance-to-line);
 		}
 
 		// timeline item dot
 		&::after {
-			@include svg-mask(var(--color-light));
-
 			aspect-ratio: 1 / 1;
+			background: $line-color;
+			border-radius: 50%;
+			content: '';
 			transform: translate(var(--timeline-item-dot-translate-x, -50%), -50%);
 			width: $dot-size;
 		}
