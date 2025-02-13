@@ -116,9 +116,7 @@
 		}
 
 		&__title {
-			@include type.hand-2;
-
-			font-weight: 500;
+			@include type.heading-1;
 		}
 	}
 }

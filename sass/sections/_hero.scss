@@ -64,7 +64,9 @@
 	}
 
 	&__title {
-		@include type.hand-2;
+		@include type.hand;
+
+		font-size: 3.6rem;
 	}
 
 	&__wave {
