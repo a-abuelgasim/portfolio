@@ -38,7 +38,7 @@ mixin showcase-item(showcaseItem, featured=false)
 									target='_blank'
 									title='GitHub')
 								span(aria-hidden='true')
-									include ../../../svgs/github.svg
+									include ../../../public/imgs/icons/github.svg
 
 						if showcaseItem.gitlabUrl
 							a.btn(
@@ -46,7 +46,7 @@ mixin showcase-item(showcaseItem, featured=false)
 									href=showcaseItem.gitlabUrl
 									target='_blank')
 								span(aria-hidden='true')
-									include ../../../svgs/gitlab.svg
+									include ../../../public/imgs/icons/gitlab.svg
 
 						if showcaseItem.url
 							a.btn(
@@ -54,7 +54,7 @@ mixin showcase-item(showcaseItem, featured=false)
 									href=showcaseItem.url
 									target='_blank')
 								span(aria-hidden='true')
-									include ../../../svgs/ext-link.svg
+									include ../../../public/imgs/icons/ext-link.svg
 
 
 //- HTML

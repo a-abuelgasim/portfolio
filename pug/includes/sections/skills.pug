@@ -1,5 +1,5 @@
-include ../mixins/heading.pug
 include ../../content/skills-content.pug
+include ../mixins/heading.pug
 
 
 //- Mixins
@@ -13,7 +13,7 @@ mixin skillsGroup(title, skills)
 					li.skills__list-item
 						img.skills__list-item-icon(
 								role="presentation"
-								src=`/svgs/skills/${skill.icon}.svg`)
+								src=`/imgs/icons/${skill.icon}.svg`)
 						span= skill.name
 
 

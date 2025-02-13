@@ -33,6 +33,10 @@ body {
 
 main {
 	overflow: hidden;
+
+	@media (prefers-reduced-motion: no-preference) {
+		transition: opacity .7s;
+	}
 }
 
 h1,

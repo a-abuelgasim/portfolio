@@ -1,4 +1,6 @@
 include ../../content/timeline-content.pug
+include ../mixins/heading.pug
+
 
 section.timeline
 	.container.container--lg
@@ -8,6 +10,10 @@ section.timeline
 		)
 
 		.timeline__container
+			.timeline__trigger
+
+			.timeline__sticky-dot
+
 			.timeline__line
 
 			ul.timeline__grid(aria-label='Timeline')
@@ -19,7 +25,7 @@ section.timeline
 							.card__header
 								img.card__icon(
 										role='presentation'
-										src=`/svgs/timeline/${timelineItem.logo}`)
+										src=`/imgs/icons/${timelineItem.logo}`)
 
 								.card__header-text
 									p.card__eyebrow= timelineItem.dates
