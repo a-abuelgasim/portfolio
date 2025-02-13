@@ -7,27 +7,17 @@
 .hero {
 	$switch-bp: 750px;
 
+	@include bg-rectangles;
+
 	background: linear-gradient(
 		180deg,
 		var(--color-bg-1) 30%,
 		var(--color-bg-2) 100%
 	);
+	padding-bottom: map.get(c.$spaces, md);
 	padding-top: map.get(c.$spaces, xl);
-	position: relative;
 
 	&__rectangle {
-		background: var(--color-secondary);
-		border-radius: 30px;
-		height: 200px;
-		inset:
-			var(--hero-rectangle-top, auto)
-			var(--hero-rectangle-right, auto)
-			var(--hero-rectangle-bottom, auto)
-			var(--hero-rectangle-left, auto);
-		position: absolute;
-		transform: rotate(var(--hero-rectangle-angle));
-		width: 200px;
-
 		&--1 {
 			--hero-rectangle-angle: -55deg;
 			--hero-rectangle-bottom: 100px;
@@ -74,7 +64,9 @@
 	}
 
 	&__title {
-		@include type.hand-2;
+		@include type.hand;
+
+		font-size: 3.6rem;
 	}
 
 	&__wave {

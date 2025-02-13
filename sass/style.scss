@@ -15,11 +15,12 @@
 
 
 /* SECTION */
-// @use './sections/footer';
+@use './sections/contact';
+@use './sections/footer';
 @use './sections/hero';
 @use './sections/profile';
-@use './sections/showcase';
 @use './sections/publications';
+@use './sections/showcase';
 @use './sections/skills';
 @use './sections/timeline';
 

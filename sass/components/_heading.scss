@@ -10,7 +10,9 @@
 	margin-bottom: map.get(c.$spaces, md);
 
 	&__text {
-		@include type.hand-2;
+		@include type.hand;
+
+		font-size: 4.2rem;
 	}
 
 	&__dots {
