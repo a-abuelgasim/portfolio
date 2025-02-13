@@ -3,6 +3,7 @@
 @use '../common/constants' as c;
 @use '../common/mixins' as *;
 @use '../components/container';
+@use '../components/heading';
 @use '../components/section';
 
 
@@ -12,10 +13,22 @@
 	$line-gutter-mobile: map.get(c.$spaces, lg);
 	$line-left: 30px;
 	$line-thickness: 6px;
-	$line-thickness-half: math.div($line-thickness, 2);
 	$line-to-card-gap: map.get(c.$spaces, lg);
 	$line-top: 30px;
+	$sticky-dot-radius: 30px;
 	$switch-bp: 800px;
+	$trigger-top: 40vh;
+
+	$line-thickness-half: math.div($line-thickness, 2);
+	$sticky-dot-fixed-top: calc(100vh - #{$trigger-top} + (1 * #{$sticky-dot-radius}));
+
+	--timeline-line-left: #{math.div($line-gutter-mobile, 2) - $line-thickness-half};
+
+	position: relative;
+
+	@include mq($switch-bp) {
+		--timeline-line-left: calc(50% - #{$line-thickness-half});
+	}
 
 	&__container {
 		position: relative;
@@ -25,17 +38,61 @@
 		}
 	}
 
+	&__trigger {
+		height: calc(100% - #{$trigger-top} - #{$sticky-dot-fixed-top} + #{section.$padding-bottom} - (#{math.div($sticky-dot-radius, 2)}));
+		position: absolute;
+		top: $trigger-top;
+		z-index: 1;
+	}
+
+	&__sticky-dot {
+		@include box-shadow(2);
+
+		aspect-ratio: 1 / 1;
+		background: var(--color-secondary);
+		border-radius: 50%;
+		height: $sticky-dot-radius;
+		left: var(--sticky-dot-left, calc(var(--timeline-line-left) + 2px));
+		position: absolute;
+		top: var(--timeline-sticky-dot-top, #{$line-top});
+		transform: translate(-50%, -50%);
+		z-index: 1;
+
+
+		@media (prefers-reduced-motion) {
+			display: none;
+		}
+
+		&--fixed {
+			--timeline-sticky-dot-top: #{$sticky-dot-fixed-top};
+
+			position: fixed;
+
+			@include mq($until: tablet) {
+				--sticky-dot-left: calc(var(--timeline-line-left) + #{container.$side-padding-mobile} + 2px);
+			}
+
+			@include mq($from: tablet, $until: desktop) {
+				--sticky-dot-left: calc(var(--timeline-line-left) + #{container.$side-padding-tablet} + 2px);
+			}
+		}
+
+		&--end {
+			--timeline-sticky-dot-top: auto;
+
+			bottom: -(section.$padding-bottom);
+			position: absolute;
+			transform: translate(-50%, 0);
+		}
+	}
+
 	&__line {
 		background: $line-color;
-		bottom: -#{section.$section-pb};
-		left: var(--timeline-line-left, #{math.div($line-gutter-mobile, 2) - $line-thickness-half});
+		bottom: -#{section.$padding-bottom};
+		left: var(--timeline-line-left);
 		position: absolute;
 		top: $line-top;
 		width: $line-thickness;
-
-		@include mq($switch-bp) {
-			--timeline-line-left: calc(50% - #{$line-thickness-half});
-		}
 	}
 
 	&__grid {
@@ -95,6 +152,8 @@
 
 		// timeline item dot
 		&::after {
+			@include box-shadow(2);
+
 			aspect-ratio: 1 / 1;
 			background: $line-color;
 			border-radius: 50%;

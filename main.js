@@ -1,7 +1,26 @@
 import './sass/style.scss';
 
 
-const YEARS_PLACEHOLDER = '%years';
+document.addEventListener('DOMContentLoaded', () => {
+  generateYearsOfExperience();
+  timelineStickyDot();
+
+  // Prevent flash of unstyled content (FOUC)
+  document.getElementById('main').style.opacity = '';
+});
+
+
+function generateYearsOfExperience() {
+  const YEARS_PLACEHOLDER = '%years';
+
+  // Keep years of experience updated
+  document
+  .querySelectorAll('[replace-exp-years]')
+  .forEach((elem) => {
+    const newTextContent = elem.textContent.replace(YEARS_PLACEHOLDER, getYearsOfExperience());
+    elem.textContent = newTextContent;
+  });
+}
 
 
 function getYearsOfExperience() {
@@ -20,15 +39,28 @@ function getYearsOfExperience() {
 }
 
 
-document.addEventListener('DOMContentLoaded', () => {
-	// Keep years of experience updated
-	document
-		.querySelectorAll('[replace-exp-years]')
-		.forEach((elem) => {
-			const newTextContent = elem.textContent.replace(YEARS_PLACEHOLDER, getYearsOfExperience());
-			elem.textContent = newTextContent;
-		});
+function timelineStickyDot() {
+  const STICKY_DOT_CLASS_PREFIX = 'timeline__sticky-dot';
+  const STICKY_DOT_FIXED_CLASS = `${STICKY_DOT_CLASS_PREFIX}--fixed`;
+  const STICKY_DOT_END_CLASS = `${STICKY_DOT_CLASS_PREFIX}--end`;
+  const stickyDot = document.querySelector(`.${STICKY_DOT_CLASS_PREFIX}`);
+  const triggerEl = document.querySelector(`.timeline__trigger`);
 
-	// Prevent flash of unstyled content (FOUC)
-	document.getElementById('main').style.display = '';
-});
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.intersectionRatio === 0) {
+        stickyDot.classList.remove(`${STICKY_DOT_FIXED_CLASS}`);
+
+        if (entry.boundingClientRect.top < 0) {
+          stickyDot.classList.add(`${STICKY_DOT_END_CLASS}`);
+        }
+      } else {
+        stickyDot.classList.remove(`${STICKY_DOT_END_CLASS}`);
+        stickyDot.classList.add(`${STICKY_DOT_FIXED_CLASS}`);
+      }
+    },
+    { root: null, threshold: 0 } // Observe in the viewport
+  );
+
+  observer.observe(triggerEl);
+}
