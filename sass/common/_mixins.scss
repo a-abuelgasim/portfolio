@@ -71,30 +71,21 @@
 	}
 }
 
-// Mixin providing the styles for a SVG icon mask-image
-@mixin svg-mask($bg-color: var(--color-accent), $svg-url: '/svgs/blob.svg') {
-	background-color: $bg-color;
-	content: '';
-	mask-image: url($svg-url);
-	mask-repeat: no-repeat;
-	mask-size: 100% 100%;
-	position: absolute;
-}
-
-// Mixin for applying an SVG icon as a background mask-image to the ::before pseudo-element of an element
-@mixin svg-mask-item($color: var(--color-accent), $svg-url: '/svgs/blob.svg') {
-	padding: .75em 1.25em .5em;
+// Styles for adding two background rectangles to a section
+@mixin bg-rectangles {
 	position: relative;
-	z-index: 0;
 
-	&::before {
-		@include svg-mask($color, $svg-url);
-
-		inset: 0 0 -.125em;
-		z-index: -1;
-	}
-
-	&:nth-of-type(even)::before {
-		transform: scaleY(-1);
+	&__rectangle {
+		background: var(--color-secondary);
+		border-radius: 30px;
+		height: 200px;
+		inset:
+			var(--hero-rectangle-top, auto)
+			var(--hero-rectangle-right, auto)
+			var(--hero-rectangle-bottom, auto)
+			var(--hero-rectangle-left, auto);
+		position: absolute;
+		transform: rotate(var(--hero-rectangle-angle));
+		width: 200px;
 	}
 }

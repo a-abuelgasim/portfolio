@@ -4,11 +4,11 @@
 
 .footer {
 	align-items: center;
-	background: var(--color-dark);
+	background: var(--color-bg-2);
 	display: flex;
-	gap: var(--footer-links-gap, map.get(c.$spaces, sm));
+	gap: var(--footer-links-gap, #{map.get(c.$spaces, sm)});
 	justify-content: center;
-	padding: map.get(c.$spaces, md) 0;
+	padding: map.get(c.$spaces, sm) 0;
 
 	@include mq($until: 400px) {
 		--footer-links-gap: #{map.get(c.$spaces, xs)};
