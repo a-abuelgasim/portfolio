@@ -1,29 +1,29 @@
+@use '../common/colors' as colors;
 @use '../common/constants' as c;
 @use '../common/mixins' as *;
 
 .btn {
-	--btn-size: 45px;
+	--btn-size: 35px;
 
-	align-items: center;
-	background-color: var(--color-accent);
+	background-color: var(--color-interactive);
 	border-radius: 50%;
 	border-width: 0;
 	color: var(--color-text-inv);
 	cursor: pointer;
-	display: flex;
+	display: grid;
 	height: var(--btn-size);
-	justify-content: center;
+	place-items: center;
 	transition: color c.$transition, background-color c.$transition;
 	width: var(--btn-size);
 
 	@include mq(tablet) {
-		--btn-size: 55px;
+		--btn-size: 45px;
 	}
 
 	&:focus-visible,
 	&:hover {
-		background-color: var(--color-focus);
-		color: var(--color-dark);
+		background-color: var(--color-interacting);
+		color: var(--color-interactive);
 		outline: none;
 	}
 
@@ -32,7 +32,7 @@
 
 		height: var(--btn-svg-size);
 		position: relative;
-		top: .125em;
+		vertical-align: middle;
 		width: var(--btn-svg-size);
 	}
 }

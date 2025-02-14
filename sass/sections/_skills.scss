@@ -4,19 +4,29 @@
 @use '../components/card';
 @use '../components/container';
 
+
 .skills {
-	&__grid,
-	&__group {
-		display: flex;
-		flex-wrap: wrap;
-		gap: var(--skills-gap, map.get(c.$spaces, md));
-		justify-content: center;
+	&__grid {
+		&-container {
+			display: grid;
+			justify-items: center;
+		}
+
+		display: grid;
+		gap: var(--skills-gap, 30px);
+		grid-template-columns: var(--skills-grid-template-columns);
+
+		@include mq(414px) {
+			--skills-grid-template-columns: repeat(2, minmax(0, 300px));
+		}
+
+		@include mq(desktop) {
+			--skills-grid-template-columns: repeat(4, minmax(0, 1fr));
+		}
 	}
 
 	&__card {
-		$card-width: 230px;
-
-		width: $card-width;
+		--card-bg-color: var(--color-bg-2);
 
 		&-heading {
 			align-items: center;
@@ -30,7 +40,6 @@
 	&__list-item {
 		align-items: center;
 		display: flex;
-		font-size: 1.8rem;
 		font-weight: 600;
 		gap: 1em;
 		white-space: nowrap;

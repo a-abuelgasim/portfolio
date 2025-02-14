@@ -1,4 +1,5 @@
 include ../../content/showcase-content.pug
+include ../mixins/heading.pug
 include ../mixins/img.pug
 
 
@@ -37,7 +38,7 @@ mixin showcase-item(showcaseItem, featured=false)
 									target='_blank'
 									title='GitHub')
 								span(aria-hidden='true')
-									include ../../../svgs/github.svg
+									include ../../../public/imgs/icons/github.svg
 
 						if showcaseItem.gitlabUrl
 							a.btn(
@@ -45,7 +46,7 @@ mixin showcase-item(showcaseItem, featured=false)
 									href=showcaseItem.gitlabUrl
 									target='_blank')
 								span(aria-hidden='true')
-									include ../../../svgs/gitlab.svg
+									include ../../../public/imgs/icons/gitlab.svg
 
 						if showcaseItem.url
 							a.btn(
@@ -53,25 +54,27 @@ mixin showcase-item(showcaseItem, featured=false)
 									href=showcaseItem.url
 									target='_blank')
 								span(aria-hidden='true')
-									include ../../../svgs/ext-link.svg
+									include ../../../public/imgs/icons/ext-link.svg
 
 
 //- HTML
 section
-	.container
-		h2.section-heading
-			span Showcase
+	.container.container--md
+		+heading(
+			3,
+			showcase.heading
+		)
 
-		//- .showcase__intro
-		//- 	each showcaseIntroP in showcaseIntro
-		//- 		p !{showcaseIntroP}
+		.showcase__intro.container.container--xs
+			each p in showcase.intro
+				p !{p}
 
-		p#showcase-pills-title.u-display-none Keywords
+		p#showcase-pills-title.u-sr-only= showcase.a11y.pillsLabel
 
 		.showcase-items.showcase-items--featured
-			each showcaseItem in featuredShowcases
+			each showcaseItem in showcase.featuredShowcases
 				+showcase-item(showcaseItem, true)
 
 		.showcase-items
-			each showcaseItem in showcases
+			each showcaseItem in showcase.showcases
 				+showcase-item(showcaseItem)

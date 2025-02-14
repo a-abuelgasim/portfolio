@@ -2,23 +2,48 @@ include ../../content/hero-content.pug
 
 
 section.hero
-  .hero__container.container.container--wide
-    .hero__text
-      h1.hero__title
-        span= `${hero.title}`
+	h1.u-sr-only= hero.a11y.title
+	h2.u-sr-only= hero.a11y.heading
 
-        img.hero__title-img(
-            role="presentation"
-            src="/svgs/hand.svg")
+	.hero__rectangle.hero__rectangle--1
 
-      p.hero__subtitle !{hero.subtitle}
+	.hero__rectangle.hero__rectangle--2
 
-      .hero__list
-        each listItem in hero.list
-          p.hero__list-item= listItem
+	.hero__container.container.container--sm
+		.hero__card
+			.hero__flex
+				.hero__flex-1
+					.hero__title(aria-hidden='true')
+						img.hero__wave(
+								alt=hero.a11y.wave
+								src="/imgs/hero/hand.svg")
 
-    .hero__laptop
-      img(
-          src="/imgs/laptop.png"
-          role="presentation"
-      )
+						span= hero.heading
+
+					.hero__name(aria-hidden='true')
+						= hero.name
+
+					p.hero__text(replace-exp-years)
+						= hero.text
+
+					.hero__actions
+						each val, key in hero.actions
+							a.btn(
+									aria-label= val.ariaLabel
+									download=key === 'resume' && val.fileName
+									href= val.url
+									target=key !== 'resume' && '_blank')
+								span(aria-hidden='true')
+									if key === 'github'
+										include ../../../public/imgs/icons/github.svg
+									else if key === 'gitlab'
+										include ../../../public/imgs/icons/gitlab.svg
+									else if key === 'linkedIn'
+										include ../../../public/imgs/icons/linked-in.svg
+									else if key === 'resume'
+										include ../../../public/imgs/icons/resume.svg
+
+				.hero__flex-2
+					img.hero__img(
+							role="presentation"
+							src='/imgs/hero/profile.jpg')

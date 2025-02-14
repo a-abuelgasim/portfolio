@@ -1,15 +1,23 @@
 include ../../content/timeline-content.pug
+include ../mixins/heading.pug
+
 
 section.timeline
-	.container.container--wide
-		h2.section-heading
-			span Timeline
+	.container.container--lg
+		+heading(
+			5,
+			timeline.heading
+		)
 
 		.timeline__container
+			.timeline__trigger
+
+			.timeline__sticky-dot
+
 			.timeline__line
 
 			ul.timeline__grid(aria-label='Timeline')
-				each timelineItem in timeline
+				each timelineItem in timeline.events
 					li.card.timeline__card(
 							class=timelineItem.rightCol ? 'timeline__card--right' : 'timeline__card--left',
 							style=timelineItem.rowSpan ? `--timeline-item-row-span: ${timelineItem.rowSpan}` : '')
@@ -17,7 +25,7 @@ section.timeline
 							.card__header
 								img.card__icon(
 										role='presentation'
-										src=`/svgs/timeline/${timelineItem.logo}`)
+										src=`/imgs/icons/${timelineItem.logo}`)
 
 								.card__header-text
 									p.card__eyebrow= timelineItem.dates
