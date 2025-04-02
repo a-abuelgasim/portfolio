@@ -72,7 +72,7 @@
 				--sticky-dot-left: calc(var(--timeline-line-left) + #{container.$side-padding-mobile} + 2px);
 			}
 
-			@include mq($from: tablet, $until: desktop) {
+			@include mq($from: tablet, $until: $switch-bp) {
 				--sticky-dot-left: calc(var(--timeline-line-left) + #{container.$side-padding-tablet} + 2px);
 			}
 		}

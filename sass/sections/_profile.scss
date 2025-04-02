@@ -14,11 +14,13 @@
 		}
 
 		&-1 {
-			flex: 4 0 0;
+			flex: 3 0 0;
 		}
 
 		&-2 {
-			flex: 3 0 0;
+			display: grid;
+			flex: 4 0 0;
+			place-content: center;
 		}
 	}
 
@@ -31,9 +33,17 @@
 	}
 
 	&__img-container {
-		--profile-img-width: 350px;
+		--profile-img-width: 300px;
 
 		position: relative;
+
+		@include mq(400px) {
+			--profile-img-width: 350px;
+		}
+
+		@include mq(tablet) {
+			--profile-img-width: 500px;
+		}
 
 		img {
 			position: relative;
