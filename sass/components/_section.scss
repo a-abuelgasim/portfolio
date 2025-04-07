@@ -7,7 +7,13 @@ $padding-top: map.get(c.$spaces, lg);
 section {
 	padding: #{$padding-top} 0 #{$padding-bottom};
 
+	&:nth-of-type(odd) {
+		--card-bg-color: var(--color-bg-2);
+	}
+
 	&:nth-of-type(even) {
+		--card-bg-color: var(--color-bg-1);
+
 		background: var(--color-bg-2);
 	}
 }

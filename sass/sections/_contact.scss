@@ -20,8 +20,6 @@
 	}
 
 	&__card {
-		--card-bg-color: var(--color-bg-2);
-
 		font-size: map.get(type.$font-sizes, 3);
 		position: relative;
 		z-index: 1;

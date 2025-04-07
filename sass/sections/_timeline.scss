@@ -107,8 +107,6 @@
 	}
 
 	&__card {
-		--card-bg-color: var(--color-bg-1);
-
 		align-self: flex-start;
 		grid-row: span var(--timeline-item-row-span, auto);
 		position: relative;
