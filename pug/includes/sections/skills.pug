@@ -27,7 +27,5 @@ section
 
 	.skills__grid-container.container.container--lg
 		.skills__grid
-			+skillsGroup('Libraries & Frameworks', skills.frameworks)
-			+skillsGroup('Languages', skills.languages)
-			+skillsGroup('Testing', skills.testing)
-			+skillsGroup('Other', skills.other)
+			each skillGroup in skills.groups
+				+skillsGroup(skillGroup.title, skillGroup.skills)
