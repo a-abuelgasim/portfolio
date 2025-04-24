@@ -192,7 +192,7 @@
 		&--3 {
 			--showcase-item-img-overlay-border-radius: 0 0 #{c.$border-radius} 0;
 			--showcase-item-img-1-aspect-ratio: 4 / 3;
-			--showcase-item-img-1-clip-path-1: inset(calc(var(--showcase-item-img-2-height) + var(--showcase-item-imgs-gap)) 0 0 0 round 0 #{c.$border-radius} 0 0);
+			--showcase-item-img-1-clip-path-1: inset(calc(var(--showcase-item-img-2-height) + var(--showcase-item-imgs-gap)) 0 0 0 round #{c.$border-radius} 0 0 0);
 			--showcase-item-img-1-clip-path-2: inset(0 0 0 calc(var(--showcase-item-img-2-width) + var(--showcase-item-imgs-gap)) round #{c.$border-radius} 0 0 0);
 			--showcase-item-img-1-clip-path-3: inset(var(--showcase-item-img-2-height) 0 0 var(--showcase-item-img-2-width));
 			--showcase-item-img-1-width: 70%;
