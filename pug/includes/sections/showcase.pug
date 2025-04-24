@@ -4,19 +4,8 @@ include ../mixins/img.pug
 
 
 //- MIXINS
-mixin showcase-item(showcaseItem, featured=false)
-	.showcase-item(class=featured && 'showcase-item--featured')
-		if showcaseItem.url
-			a.showcase-item__img-container(
-					aria-hidden='true'
-					href=showcaseItem.url
-					target='_blank')
-				+img(showcaseItem.img, 'showcase', 'showcase-item__img')
-
-		else
-			.showcase-item__img-container
-				+img(showcaseItem.img, 'showcase', 'showcase-item__img')
-
+mixin showcase-item(showcaseItem, n)
+	.showcase-item(class=`showcase-item--${n}`)
 		.showcase-item__card.card
 			.card__content
 				h3.showcase-item__title.card__heading= showcaseItem.title
@@ -56,10 +45,28 @@ mixin showcase-item(showcaseItem, featured=false)
 								span(aria-hidden='true')
 									include ../../../public/imgs/icons/ext-link.svg
 
+		.showcase-item__imgs
+			// Cut-out image wrapper
+			.showcase-item__img-wrapper
+				// Cut-out image
+				- const repeat = [1, 2, 3]
+				each _ in repeat
+					+img(showcaseItem.imgs[0], 'showcase', 'showcase-item__img')
+
+				.showcase-item__img-overlay
+
+				// Overlayed image
+				+img(showcaseItem.imgs[1], 'showcase', 'showcase-item__img')
+
+			each img, index in showcaseItem.imgs
+				if index > 1
+					.showcase-item__img-wrapper
+						+img(img, 'showcase', 'showcase-item__img')
+
 
 //- HTML
 section
-	.container.container--md
+	.container.container--xl
 		+heading(
 			3,
 			showcase.heading
@@ -71,10 +78,6 @@ section
 
 		p#showcase-pills-title.u-sr-only= showcase.a11y.pillsLabel
 
-		.showcase-items.showcase-items--featured
-			each showcaseItem in showcase.featuredShowcases
-				+showcase-item(showcaseItem, true)
-
 		.showcase-items
-			each showcaseItem in showcase.showcases
-				+showcase-item(showcaseItem)
+			each showcaseItem, index in showcase.showcases
+				+showcase-item(showcaseItem, index + 1)

@@ -4,11 +4,11 @@
 
 $side-padding-mobile: map.get(c.$spaces, sm);
 $side-padding-tablet: map.get(c.$spaces, md);
-$max-width-xs: 600px;
+$max-width-xs: map.get(c.$breakpoints, tablet);
 $max-width-sm: 960px;
 $max-width-md: 1040px;
-// $max-width-lg: map.get(c.$breakpoints, wide);
 $max-width-lg: 1280px;
+$max-width-xl: map.get(c.$breakpoints, wide);
 
 .container {
 	--container-side-padding: #{$side-padding-mobile};
@@ -36,5 +36,9 @@ $max-width-lg: 1280px;
 
 	&--lg {
 		--container-max-width: calc(#{$max-width-lg} + (var(--container-side-padding) * 2));
+	}
+
+	&--xl {
+		--container-max-width: calc(#{$max-width-xl} + (var(--container-side-padding) * 2));
 	}
 }
