@@ -110,7 +110,7 @@
 		align-self: flex-start;
 		grid-row: span var(--timeline-item-row-span, auto);
 		position: relative;
-		transition: background-color .5s ease-in-out;
+		transition: background-color .5s ease-in-out, box-shadow .5s ease-in-out;
 
 		&--left {
 			@include mq($switch-bp) {
@@ -126,7 +126,10 @@
 		}
 
 		&--muted {
-			background-color: color-mix(in srgb, var(--card-bg-color) 95%, var(--color-text));
+			@media (prefers-reduced-motion: no-preference) {
+				background-color: color-mix(in srgb, var(--card-bg-color) 90%, var(--color-primary));
+				box-shadow: none;
+			}
 		}
 
 		// timeline item line and dot
