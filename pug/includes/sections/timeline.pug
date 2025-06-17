@@ -1,0 +1,46 @@
+include ../../content/timeline-content.pug
+include ../mixins/heading.pug
+
+
+section.timeline
+	.container.container--lg
+		+heading(
+			5,
+			timeline.heading
+		)
+
+		.timeline__container
+			.timeline__trigger
+
+			.timeline__sticky-dot
+
+			.timeline__line
+
+			ul.timeline__grid(aria-label='Timeline')
+				each timelineItem in timeline.events
+					li.card.timeline__card(
+							class=timelineItem.rightCol ? 'timeline__card--right' : 'timeline__card--left',
+							style=timelineItem.rowSpan ? `--timeline-item-row-span: ${timelineItem.rowSpan}` : '')
+						.card__content
+							.card__header
+								img.card__icon(
+										role='presentation'
+										src=`/imgs/icons/${timelineItem.logo}`)
+
+								.card__header-text
+									if timelineItem.dates
+										p.card__eyebrow= timelineItem.dates
+
+									p.card__heading= timelineItem.title
+
+									if timelineItem.url
+										a.card__subheading(
+												href=timelineItem.url
+												target='_blank')
+											= timelineItem.subtitle
+									else
+										p.card__subheading
+											= timelineItem.subtitle
+
+							each p in timelineItem.text
+								p.card__p !{p}

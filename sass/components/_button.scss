@@ -1,0 +1,38 @@
+@use '../common/colors' as colors;
+@use '../common/constants' as c;
+@use '../common/mixins' as *;
+
+.btn {
+	--btn-size: 35px;
+
+	background-color: var(--color-interactive);
+	border-radius: 50%;
+	border-width: 0;
+	color: var(--color-text-inv);
+	cursor: pointer;
+	display: grid;
+	height: var(--btn-size);
+	place-items: center;
+	transition: color c.$transition, background-color c.$transition;
+	width: var(--btn-size);
+
+	@include mq(tablet) {
+		--btn-size: 45px;
+	}
+
+	&:focus-visible,
+	&:hover {
+		background-color: var(--color-interacting);
+		color: var(--color-interactive);
+		outline: none;
+	}
+
+	svg {
+		--btn-svg-size: calc(var(--btn-size) * .55);
+
+		height: var(--btn-svg-size);
+		position: relative;
+		vertical-align: middle;
+		width: var(--btn-svg-size);
+	}
+}

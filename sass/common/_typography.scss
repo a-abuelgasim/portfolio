@@ -1,0 +1,63 @@
+@use 'sass:map';
+@use '../common/constants' as c;
+@use '../common/mixins' as *;
+
+
+$font-sizes: (
+	1: 2.2rem,
+	2: 2rem,
+	3: 1.8rem,
+	4: 1.6rem,
+	5: 1.4rem,
+);
+
+@mixin hand {
+	color: var(--color-primary-dark);
+	font-family: 'Just Another Hand', serif;
+}
+
+@mixin default {
+	font-family: Assistant, sans-serif;
+}
+
+@mixin heading-1 {
+	font-size: map.get($font-sizes, 1);
+	font-weight: 700;
+}
+
+@mixin heading-2 {
+	font-size: map.get($font-sizes, 2);
+	font-weight: 700;
+}
+
+@mixin heading-3 {
+	font-size: map.get($font-sizes, 4);
+	font-weight: 600;
+}
+
+@mixin type-body {
+	font-size: map.get($font-sizes, 4);
+}
+
+@mixin type-caption {
+	font-size: map.get($font-sizes, 5);
+}
+
+
+html {
+	@include default;
+	font-size: 8px;
+
+	@include mq(tablet) {
+		font-size: 10px;
+	}
+}
+
+body {
+	color: var(--color-text);
+	font-size: 1.6rem;
+}
+
+.text-sm {
+	font-size: max(1.2rem, 12px);
+}

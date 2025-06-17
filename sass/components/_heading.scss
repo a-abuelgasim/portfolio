@@ -1,0 +1,35 @@
+@use 'sass:map';
+@use '../common/constants' as c;
+@use '../common/typography' as type;
+
+.heading {
+	align-items: center;
+	display: flex;
+	gap: 30px;
+	justify-content: center;
+	margin-bottom: map.get(c.$spaces, md);
+
+	&__text {
+		@include type.hand;
+
+		font-size: 4.2rem;
+	}
+
+	&__dots {
+		display: flex;
+		gap: 4px;
+	}
+
+	&__dot {
+		$height: 4px;
+
+		background: var(--color-tertiary);
+		border-radius: $height;
+		height: $height;
+		width: var(--heading-dot-width, 6px);
+
+		&--long {
+			--heading-dot-width: 50px;
+		}
+	}
+}

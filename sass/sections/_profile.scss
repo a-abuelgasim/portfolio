@@ -1,0 +1,65 @@
+@use 'sass:map';
+@use '../common/constants' as c;
+@use '../common/mixins' as *;
+
+
+.profile {
+	&__flex {
+		align-items: center;
+		display: flex;
+		gap: 80px;
+
+		@include mq($until: desktop) {
+			flex-direction: column;
+		}
+
+		&-1 {
+			flex: 3 0 0;
+		}
+
+		&-2 {
+			display: grid;
+			flex: 4 0 0;
+			place-content: center;
+		}
+	}
+
+	&__p {
+		text-align: justify;
+
+		&:not(:last-of-type) {
+			margin-bottom: map.get(c.$spaces, xs);
+		}
+	}
+
+	&__img-container {
+		--profile-img-width: 300px;
+
+		position: relative;
+
+		@include mq(400px) {
+			--profile-img-width: 350px;
+		}
+
+		@include mq(tablet) {
+			--profile-img-width: 500px;
+		}
+
+		img {
+			position: relative;
+			width: var(--profile-img-width);
+		}
+
+		&::before {
+			aspect-ratio: 4 / 3;
+			background: var(--color-secondary);
+			border-radius: c.$border-radius;
+			content: '';
+			left: -20px;
+			position: absolute;
+			top: -30px;
+			transform: rotate(-2deg);
+			width: calc(var(--profile-img-width) * 1.1);
+		}
+	}
+}

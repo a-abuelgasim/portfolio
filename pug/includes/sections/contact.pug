@@ -1,0 +1,31 @@
+include ../../content/contact-content.pug
+include ../mixins/heading.pug
+
+
+section.contact
+	.contact__rectangle.contact__rectangle--1
+
+	.contact__rectangle.contact__rectangle--2
+
+	.container.container--xs
+		+heading(
+			6,
+			contact.heading
+		)
+
+		.card.contact__card
+			.card__content
+				each p in contact.text
+					.card__p= p
+
+				.card__btns
+					each val, key in contact.actions
+						a.btn(
+								aria-label= val.ariaLabel
+								href= val.url
+								target='_blank')
+							span(aria-hidden='true')
+								if key === 'email'
+									include ../../../public/imgs/icons/email.svg
+								else if key === 'linkedIn'
+									include ../../../public/imgs/icons/linked-in.svg

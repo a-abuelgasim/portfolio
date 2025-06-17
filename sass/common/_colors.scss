@@ -1,0 +1,22 @@
+$black: #020911;
+$blue-dark: #24344b;
+$blue-mid: #274472;
+$blue: #bcd2ee;
+$peach: #ffb885;
+$pink: #d8315b;
+$white: #fff;
+$white-blue: #f0f3fa;
+
+:root {
+	--color-bg-1: #{$white};
+	--color-bg-2: #{$white-blue};
+	--color-primary: #{$blue-mid};
+	--color-primary-dark: #{$blue-dark};
+	--color-secondary: #{$blue};
+	--color-tertiary: #{$peach};
+	--color-accent: #{$pink};
+	--color-text: #{$blue-dark};
+	--color-text-inv: #{$white};
+	--color-interactive: #{$pink};
+	--color-interacting: var(--color-tertiary);
+}

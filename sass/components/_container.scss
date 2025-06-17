@@ -1,0 +1,44 @@
+@use 'sass:map';
+@use '../common/constants' as c;
+@use '../common/mixins' as *;
+
+$side-padding-mobile: map.get(c.$spaces, sm);
+$side-padding-tablet: map.get(c.$spaces, md);
+$max-width-xs: map.get(c.$breakpoints, tablet);
+$max-width-sm: 960px;
+$max-width-md: 1040px;
+$max-width-lg: 1280px;
+$max-width-xl: map.get(c.$breakpoints, wide);
+
+.container {
+	--container-side-padding: #{$side-padding-mobile};
+
+	margin: 0 auto;
+	max-width: var(--container-max-width);
+	padding: 0 var(--container-side-padding);
+	width: 100%;
+
+	@include mq(tablet) {
+		--container-side-padding: #{$side-padding-tablet};
+	}
+
+	&--xs {
+		--container-max-width: calc(#{$max-width-xs} + (var(--container-side-padding) * 2));
+	}
+
+	&--sm {
+		--container-max-width: calc(#{$max-width-sm} + (var(--container-side-padding) * 2));
+	}
+
+	&--md {
+		--container-max-width: calc(#{$max-width-md} + (var(--container-side-padding) * 2));
+	}
+
+	&--lg {
+		--container-max-width: calc(#{$max-width-lg} + (var(--container-side-padding) * 2));
+	}
+
+	&--xl {
+		--container-max-width: calc(#{$max-width-xl} + (var(--container-side-padding) * 2));
+	}
+}
