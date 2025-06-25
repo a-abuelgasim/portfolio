@@ -1,0 +1,51 @@
+include ../../content/hero-content.pug
+
+
+section.hero
+	h1.u-sr-only= hero.a11y.title
+	h2.u-sr-only= hero.a11y.heading
+
+	.hero__rectangle.hero__rectangle--1
+
+	.hero__rectangle.hero__rectangle--2
+
+	.hero__container.container.container--sm
+		.hero__card
+			.hero__flex
+				.hero__flex-1
+					.hero__title(aria-hidden='true')
+						img.hero__wave(
+								alt=hero.a11y.wave
+								src="/imgs/hero/hand.svg")
+
+						span= hero.heading
+
+					.hero__name(aria-hidden='true')
+						= hero.name
+
+					.hero__line
+
+					p.hero__text(replace-exp-years)
+						= hero.text
+
+					.hero__actions
+						each val, key in hero.actions
+							a.btn(
+									aria-label= val.ariaLabel
+									download=key === 'resume' && val.fileName
+									href= val.url
+									target=key !== 'resume' && '_blank')
+								span(aria-hidden='true')
+									if key === 'github'
+										include ../../../public/imgs/icons/github.svg
+									else if key === 'gitlab'
+										include ../../../public/imgs/icons/gitlab.svg
+									else if key === 'linkedIn'
+										include ../../../public/imgs/icons/linked-in.svg
+									else if key === 'resume'
+										include ../../../public/imgs/icons/resume.svg
+
+				.hero__flex-2
+					img.hero__img(
+							role="presentation"
+							src='/imgs/hero/profile.jpg')

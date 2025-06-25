@@ -1,0 +1,206 @@
+@use 'sass:map';
+@use '../common/mixins' as *;
+@use '../common/constants' as c;
+
+
+.showcase {
+	&__intro {
+		p {
+			margin-bottom: var(--showcase-intro-p-margin-bottom);
+
+			&:not(last-of-type) {
+				--showcase-intro-p-margin-bottom: #{map.get(c.$spaces, xs)};
+			}
+
+			&:last-of-type {
+				--showcase-intro-p-margin-bottom: #{map.get(c.$spaces, xl)};
+			}
+		}
+	}
+
+	&-items {
+		display: grid;
+		gap: 175px;
+	}
+
+	&-item {
+		$showcase-item: &;
+		$switch-bp: 'desktop';
+
+		--showcase-item-imgs-gap: #{map.get(c.$spaces, xs)};
+
+		align-items: center;
+		display: flex;
+		flex-direction: var(--showcase-item-flex-dir);
+		gap: var(--showcase-item-gap, #{map.get(c.$spaces, sm)});
+
+		@include mq(tablet) {
+			--showcase-item-imgs-gap: #{map.get(c.$spaces, sm)};
+		}
+
+		@include mq($until: $switch-bp) {
+			--showcase-item-flex-dir: column-reverse;
+		}
+
+		@include mq($switch-bp) {
+			--showcase-item-gap: #{map.get(c.$spaces, md)};
+
+			&:nth-of-type(even) {
+				--showcase-item-flex-dir: row-reverse;
+			}
+		}
+
+		&__card {
+			flex: 1 0 0;
+		}
+
+		&__imgs {
+			display: flex;
+			flex: 2 0 0;
+			flex-flow: var(--showcase-item-imgs-flex-dir, row) wrap;
+			gap: var(--showcase-item-imgs-gap);
+
+			@include mq($until: $switch-bp) {
+				justify-content: center;
+				width: 90%;
+			}
+		}
+
+		&__img {
+			$showcase-item-img: &;
+
+			border-radius: c.$border-radius;
+			display: block;
+			height: 100%;
+			object-fit: cover;
+			object-position: var(--showcase-item-img-object-position, top);
+			width: 100%;
+
+			&-wrapper {
+				align-self: var(--showcase-item-img-align-self, flex-start);
+				aspect-ratio: var(--showcase-item-img-aspect-ratio);
+				width: var(--showcase-item-img-width);
+
+				// Image 1
+				&:nth-of-type(1) {
+					--showcase-item-img-width: var(--showcase-item-img-1-width);
+					--showcase-item-img-aspect-ratio: var(--showcase-item-img-1-aspect-ratio);
+
+					position: relative;
+
+					#{$showcase-item-img} {
+						position: absolute;
+
+						&:nth-of-type(1) {
+							clip-path: var(--showcase-item-img-1-clip-path-1);
+						}
+
+						&:nth-of-type(2) {
+							clip-path: var(--showcase-item-img-1-clip-path-2);
+						}
+
+						&:nth-of-type(3) {
+							clip-path: var(--showcase-item-img-1-clip-path-3);
+						}
+
+						// Image 2 (overlayed image)
+						&:nth-of-type(4) {
+							height: var(--showcase-item-img-2-height);
+							inset: var(--showcase-item-img-2-inset);
+							width: var(--showcase-item-img-2-width);
+						}
+					}
+				}
+
+				// Image 3
+				&:nth-of-type(2) {
+					--showcase-item-img-align-self: var(--showcase-item-img-3-align-self);
+					--showcase-item-img-aspect-ratio: var(--showcase-item-img-3-aspect-raio);
+					--showcase-item-img-width: var(--showcase-item-img-3-width);
+				}
+
+				// Image 4
+				&:nth-of-type(3) {
+					--showcase-item-img-align-self: var(--showcase-item-img-4-align-self);
+					--showcase-item-img-aspect-ratio: var(--showcase-item-img-4-aspect-raio);
+					--showcase-item-img-width: var(--showcase-item-img-4-width);
+				}
+
+				// Image 5
+				&:nth-of-type(4) {
+					--showcase-item-img-align-self: var(--showcase-item-img-5-align-self);
+					--showcase-item-img-aspect-ratio: var(--showcase-item-img-5-aspect-raio);
+					--showcase-item-img-width: var(--showcase-item-img-5-width);
+				}
+			}
+
+			&-overlay {
+				background: var(--section-bg);
+				border-radius: var(--showcase-item-img-overlay-border-radius);
+				height: calc(var(--showcase-item-img-2-height) + var(--showcase-item-imgs-gap));
+				inset: var(--showcase-item-img-2-inset);
+				position: absolute;
+				width: calc(var(--showcase-item-img-2-width) + var(--showcase-item-imgs-gap));
+			}
+		}
+
+		&:nth-of-type(even) {
+			--showcase-item-imgs-flex-dir: row-reverse;
+		}
+
+		// Showcase item 1
+		&--1 {
+			--showcase-item-img-overlay-border-radius: #{c.$border-radius} 0 0;
+			--showcase-item-img-1-aspect-ratio: 4 / 3;
+			--showcase-item-img-1-clip-path-1: inset(0 0 calc(var(--showcase-item-img-2-height) + var(--showcase-item-imgs-gap)) 0 round 0 0 #{c.$border-radius} 0);
+			--showcase-item-img-1-clip-path-2: inset(0 calc(var(--showcase-item-img-2-width) + var(--showcase-item-imgs-gap)) 0 0 round 0 0 #{c.$border-radius} 0);
+			--showcase-item-img-1-clip-path-3: inset(0 calc(var(--showcase-item-img-2-width) + var(--showcase-item-imgs-gap) - #{c.$border-radius}) calc(var(--showcase-item-img-2-height) + var(--showcase-item-imgs-gap) - #{c.$border-radius}) 0);
+			--showcase-item-img-1-width: 95%;
+			--showcase-item-img-2-height: 45%;
+			--showcase-item-img-2-inset: auto 0 0 auto;
+			--showcase-item-img-2-width: 40%;
+			--showcase-item-img-3-aspect-raio: 4 / 5;
+			--showcase-item-img-3-width: calc(100% - var(--showcase-item-img-4-width) - var(--showcase-item-img-5-width) - (2 * var(--showcase-item-imgs-gap)));
+			--showcase-item-img-4-aspect-raio: 2 / 3;
+			--showcase-item-img-4-width: 22%;
+			--showcase-item-img-3-align-self: center;
+			--showcase-item-img-5-aspect-raio: 1 / 2;
+			--showcase-item-img-5-width: 30%;
+		}
+
+		// Showcase item 2
+		&--2 {
+			--showcase-item-img-object-position: top left;
+			--showcase-item-img-overlay-border-radius: 0 0 0 #{c.$border-radius};
+			--showcase-item-img-1-aspect-ratio: 8 / 5;
+			--showcase-item-img-1-clip-path-1: inset(calc(var(--showcase-item-img-2-height) + var(--showcase-item-imgs-gap)) 0 0 0 round 0 #{c.$border-radius} 0 0);
+			--showcase-item-img-1-clip-path-2: inset(0 calc(var(--showcase-item-img-2-width) + var(--showcase-item-imgs-gap)) 0 0 round 0 #{c.$border-radius} 0 0);
+			--showcase-item-img-1-clip-path-3: inset(var(--showcase-item-img-2-height) var(--showcase-item-img-2-width) 0 0);
+			--showcase-item-img-1-width: 100%;
+			--showcase-item-img-2-height: 50%;
+			--showcase-item-img-2-inset: 0 0 auto auto;
+			--showcase-item-img-2-width: 35%;
+			--showcase-item-img-3-align-self: flex-end;
+			--showcase-item-img-3-aspect-raio: 2 / 3;
+			--showcase-item-img-3-width: 45%;
+			--showcase-item-img-4-align-self: center;
+			--showcase-item-img-4-aspect-raio: 4 / 5;
+			--showcase-item-img-4-width: 45%;
+		}
+
+		// Showcase item 3
+		&--3 {
+			--showcase-item-img-overlay-border-radius: 0 0 #{c.$border-radius} 0;
+			--showcase-item-img-1-aspect-ratio: 4 / 3;
+			--showcase-item-img-1-clip-path-1: inset(calc(var(--showcase-item-img-2-height) + var(--showcase-item-imgs-gap)) 0 0 0 round #{c.$border-radius} 0 0 0);
+			--showcase-item-img-1-clip-path-2: inset(0 0 0 calc(var(--showcase-item-img-2-width) + var(--showcase-item-imgs-gap)) round #{c.$border-radius} 0 0 0);
+			--showcase-item-img-1-clip-path-3: inset(var(--showcase-item-img-2-height) 0 0 var(--showcase-item-img-2-width));
+			--showcase-item-img-1-width: 70%;
+			--showcase-item-img-2-height: 57%;
+			--showcase-item-img-2-inset: 0 auto auto 0;
+			--showcase-item-img-2-width: 40%;
+			--showcase-item-img-3-aspect-raio: 7 / 14.2;
+			--showcase-item-img-3-width: calc(100% - var(--showcase-item-img-1-width) - var(--showcase-item-imgs-gap));
+		}
+	}
+}

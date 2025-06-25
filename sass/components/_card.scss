@@ -1,0 +1,104 @@
+@use 'sass:map';
+@use '../common/constants' as c;
+@use '../common/colors';
+@use '../common/mixins' as *;
+@use '../common/typography' as type;
+
+$heading-line-height: 1.3em;
+
+.card {
+	@include box-shadow;
+
+	$icon-size: 5rem;
+
+	background-color: var(--card-bg-color);
+	border-radius: c.$border-radius;
+	display: flex;
+	flex-direction: column;
+
+	&__header,
+	&__heading,
+	&__subheading
+	&__pills {
+		margin-bottom: map.get(c.$spaces, sm);
+	}
+
+	&__img {
+		border-radius: c.$border-radius c.$border-radius 0 0;
+		display: block;
+		width: 100%;
+	}
+
+	&__content {
+		display: flex;
+		flex-direction: column;
+		flex-grow: 1;
+		padding: 30px;
+	}
+
+	&__header {
+		$switch-bp: 400px;
+
+		display: flex;
+		gap: .75em;
+
+		@include mq($until: $switch-bp) {
+			flex-direction: column;
+		}
+
+		@include mq($switch-bp) {
+			align-items: center;
+		}
+	}
+
+	&__icon {
+		flex-shrink: 0;
+		position: relative;
+		top: 2px;
+		width: $icon-size;
+	}
+
+	&__header-text {
+		* {
+			margin: 0;
+		}
+	}
+
+	&__eyebrow {
+		@include type.heading-3;
+	}
+
+	&__heading {
+		@include type.heading-2;
+
+		line-height: $heading-line-height;
+	}
+
+	&__subheading {
+		font-size: map.get(type.$font-sizes, 3);
+		font-weight: 700;
+	}
+
+	&__pills {
+		display: flex;
+		flex-wrap: wrap;
+		gap: map.get(c.$spaces, xs);
+		margin-bottom: map.get(c.$spaces, sm);
+	}
+
+	&__text {
+		flex-grow: 1;
+	}
+
+	&__p:not(:last-of-type) {
+		margin-bottom: map.get(c.$spaces, xs);
+	}
+
+	&__btns {
+		display: flex;
+		flex-wrap: wrap;
+		gap: map.get(c.$spaces, sm);
+		justify-content: flex-end;
+		margin-top: map.get(c.$spaces, md);
+	}
+}

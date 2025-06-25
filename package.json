@@ -1,0 +1,43 @@
+{
+  "name": "portfolio",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "npm run pug && vite build",
+    "dev": "vite --host",
+    "preview": "vite preview",
+    "preview:build": "npm run build && vite preview",
+    "pug": "pug ./pug/index.pug -o . -P",
+    "start": "npm run pug -- -w & npm run dev"
+  },
+  "author": "Ahmed Abuelgasim",
+  "description": "Ahmed's portfolio",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/a-abuelgasim/portfolio.git"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "not IE <= 11"
+  ],
+  "devDependencies": {
+    "autoprefixer": "^10.4.14",
+    "eslint": "^8.38.0",
+    "eslint-plugin-no-autofix": "^1.2.3",
+    "postcss": "^8.4.23",
+    "pug-cli": "^1.0.0-alpha6",
+    "sass": "^1.61.0",
+    "stylelint": "^15.4.0",
+    "stylelint-config-standard-scss": "^8.0.0",
+    "stylelint-order": "^6.0.3",
+    "stylelint-scss": "^4.6.0",
+    "vite": "^4.2.0"
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  }
+}

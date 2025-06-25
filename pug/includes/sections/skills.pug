@@ -1,0 +1,31 @@
+include ../../content/skills-content.pug
+include ../mixins/heading.pug
+
+
+//- Mixins
+mixin skillsGroup(title, skills)
+	.skills__card.card
+		.card__content
+			h3.skills__card-heading.card__heading= title
+
+			ul
+				each skill in skills
+					li.skills__list-item
+						img.skills__list-item-icon(
+								role="presentation"
+								src=`/imgs/icons/${skill.icon}.svg`)
+						span= skill.name
+
+
+//- HTML
+section
+	.container.container--md
+		+heading(
+			2,
+			skills.heading
+		)
+
+	.skills__grid-container.container.container--lg
+		.skills__grid
+			each skillGroup in skills.groups
+				+skillsGroup(skillGroup.title, skillGroup.skills)

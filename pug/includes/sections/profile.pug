@@ -1,0 +1,21 @@
+include ../../content/profile-content.pug
+include ../mixins/heading.pug
+
+section
+	.container.container--md
+		+heading(
+			1,
+			profile.heading
+		)
+
+		.profile__flex
+			.profile__flex-1
+				each p in profile.text
+					p.profile__p !{p}
+
+			.profile__flex-2
+				.profile__img-container
+					img(
+						role="presentation"
+						src="/imgs/profile/projects.png"
+					)

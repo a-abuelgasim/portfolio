@@ -1,0 +1,18 @@
+a {
+	color: var(--link-color, var(--color-interactive));
+	font-weight: 700;
+	text-decoration: none;
+
+	&:focus-visible {
+		outline: 2px solid var(--color-interactive);
+	}
+
+	&:hover {
+		color: var(--link-hover-color, var(--color-interacting));
+	}
+
+	&.light-link {
+		--link-color: var(--color-interacting);
+		--link-hover-color: var(--color-interactive);
+	}
+}

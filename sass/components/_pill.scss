@@ -1,0 +1,11 @@
+@use '../common/typography' as *;
+
+.pill {
+	@include type-caption;
+
+	background-color: var(--color-secondary);
+	border-radius: 1em;
+	color: var(--color-text);
+	font-weight: 700;
+	padding: .35em .7em;
+}

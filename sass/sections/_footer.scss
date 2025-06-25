@@ -1,0 +1,30 @@
+@use 'sass:map';
+@use '../common/constants' as c;
+@use '../common/mixins' as *;
+
+.footer {
+	align-items: center;
+	background: var(--color-bg-2);
+	display: flex;
+	gap: var(--footer-links-gap, #{map.get(c.$spaces, sm)});
+	justify-content: center;
+	padding: map.get(c.$spaces, sm) 0;
+
+	@include mq($until: 400px) {
+		--footer-links-gap: #{map.get(c.$spaces, xs)};
+
+		flex-direction: column;
+	}
+
+	&__link {
+		align-items: center;
+		display: inline-flex;
+		gap: 2px;
+		margin-left: 2px;
+	}
+
+	&__icon {
+		display: inline-block;
+		height: 2em;
+	}
+}

@@ -1,0 +1,144 @@
+@use 'sass:map';
+@use '../common/constants' as c;
+@use '../common/mixins' as *;
+@use '../common/typography' as type;
+
+
+.hero {
+	$switch-bp: 750px;
+
+	@include bg-rectangles;
+
+	background: linear-gradient(
+		180deg,
+		var(--color-bg-1) 60%,
+		var(--color-bg-2) 100%
+	);
+	padding-bottom: map.get(c.$spaces, md);
+	padding-top: var(--hero-padding-top, #{map.get(c.$spaces, lg)});
+
+	@include mq(tablet) {
+		--hero-padding-top: #{map.get(c.$spaces, xl)};
+	}
+
+	&__rectangle {
+		&--1 {
+			--hero-rectangle-angle: -55deg;
+			--hero-rectangle-bottom: 100px;
+			--hero-rectangle-left: -160px;
+		}
+
+		&--2 {
+			--hero-rectangle-angle: -20deg;
+			--hero-rectangle-right: -150px;
+			--hero-rectangle-top: 40px;
+		}
+	}
+
+	&__card {
+		padding: var(--hero-card-padding, 0 80px);
+		position: relative; // needed to sit above rectangles
+
+		@include mq(tablet) {
+			--hero-card-padding: #{map.get(c.$spaces, lg)} #{map.get(c.$spaces, md)};
+		}
+	}
+
+	&__flex {
+		align-items: center;
+		display: flex;
+		gap: var(--hero-flex-gap, #{map.get(c.$spaces, md)});
+
+		@include mq($until: $switch-bp) {
+			flex-direction: column;
+		}
+
+		@include mq(tablet) {
+			--hero-flex-gap: #{map.get(c.$spaces, lg)};
+		}
+
+		@include mq(desktop) {
+			--hero-flex-gap: #{map.get(c.$spaces, xl)};
+		}
+	}
+
+	&__title {
+		@include type.hand;
+
+		font-size: 3.6rem;
+		margin-bottom: map.get(c.$spaces, sm);
+	}
+
+	&__wave {
+		// Animation and CSS from https://jarv.is/notes/css-waving-hand-emoji/
+		animation-duration: 2.5s;
+		animation-name: wave-animation;
+		height: 1.2em;
+		margin-right: .3em;
+		position: relative;
+		top: .25em;
+		transform-origin: 70% 70%;
+	}
+
+	&__name,
+	&__line {
+		font-size: 4rem;
+	};
+
+	&__name {
+		color: var(--color-primary);
+		font-weight: 700;
+		max-width: 10ch;
+	}
+
+	&__line {
+		background-color: var(--color-tertiary);
+		border-radius: 4px;
+		height: 6px;
+		margin: map.get(c.$spaces, xs) 0 map.get(c.$spaces, sm);
+		max-width: 5ch;
+	}
+
+	&__text {
+		font-size: 2rem;
+		margin-bottom: map.get(c.$spaces, md);
+	}
+
+	&__flex-2 {
+		display: grid;
+		place-items: center;
+	}
+
+	&__img {
+		@include box-shadow($level: 1);
+
+		border-radius: 50%;
+		width: var(--hero-img-width, 250px);
+
+		@include mq(desktop) {
+			--hero-img-width: 300px;
+		}
+	}
+
+	&__actions {
+		display: flex;
+		gap: map.get(c.$spaces, sm);
+
+		.btn {
+			--btn-size: 40px;
+		}
+	}
+}
+
+
+// Animation from https://jarv.is/notes/css-waving-hand-emoji/
+@keyframes wave-animation {
+	0% { transform: rotate(0deg) }
+	10% { transform: rotate(20deg) }
+	20% { transform: rotate(-16deg) }
+	30% { transform: rotate(20deg) }
+	40% { transform: rotate(-8deg) }
+	50% { transform: rotate(10deg) }
+	60% { transform: rotate(0deg) }
+	100% { transform: rotate(0deg) }
+}

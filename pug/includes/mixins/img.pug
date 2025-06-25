@@ -1,0 +1,11 @@
+mixin img(img, subpath, classes)
+	-
+		const largestSize = img.sizes[img.sizes.length - 1];
+		const srcSetArr = img.sizes.map(size => `/imgs/${subpath}/${img.name}_${size}.${img.ext} ${size}w`);
+		const srcSet = srcSetArr.join(', ');
+	img(
+			class= classes
+			role="presentation",
+			sizes=`(max-width: ${largestSize}px) 100vw, ${largestSize}px`,
+			srcset= srcSet
+			src=`/imgs/${subpath}/${img.name}_${largestSize}.${img.ext}`)

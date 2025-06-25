@@ -1,0 +1,83 @@
+include ../../content/showcase-content.pug
+include ../mixins/heading.pug
+include ../mixins/img.pug
+
+
+//- MIXINS
+mixin showcase-item(showcaseItem, n)
+	.showcase-item(class=`showcase-item--${n}`)
+		.showcase-item__card.card
+			.card__content
+				h3.showcase-item__title.card__heading= showcaseItem.title
+
+				if showcaseItem.tags && showcaseItem.tags.length > 0
+					ul.card__pills(aria-labelledby='showcase-pills-title')
+						each tag in showcaseItem.tags
+							li.pill= tag
+
+				each p in showcaseItem.text
+					p.card__p !{p}
+
+				if showcaseItem.url || showcaseItem.githubUrl || showcaseItem.gitlabUrl
+					.card__btns
+						if showcaseItem.githubUrl
+							a.btn(
+									aria-label='View repo on GitHub'
+									href=showcaseItem.githubUrl
+									target='_blank'
+									title='GitHub')
+								span(aria-hidden='true')
+									include ../../../public/imgs/icons/github.svg
+
+						if showcaseItem.gitlabUrl
+							a.btn(
+									aria-label='View repo on GitLab'
+									href=showcaseItem.gitlabUrl
+									target='_blank')
+								span(aria-hidden='true')
+									include ../../../public/imgs/icons/gitlab.svg
+
+						if showcaseItem.url
+							a.btn(
+									aria-label='View project'
+									href=showcaseItem.url
+									target='_blank')
+								span(aria-hidden='true')
+									include ../../../public/imgs/icons/ext-link.svg
+
+		.showcase-item__imgs
+			// Cut-out image wrapper
+			.showcase-item__img-wrapper
+				// Cut-out image
+				- const repeat = [1, 2, 3]
+				each _ in repeat
+					+img(showcaseItem.imgs[0], 'showcase', 'showcase-item__img')
+
+				.showcase-item__img-overlay
+
+				// Overlayed image
+				+img(showcaseItem.imgs[1], 'showcase', 'showcase-item__img')
+
+			each img, index in showcaseItem.imgs
+				if index > 1
+					.showcase-item__img-wrapper
+						+img(img, 'showcase', 'showcase-item__img')
+
+
+//- HTML
+section
+	.container.container--xl
+		+heading(
+			3,
+			showcase.heading
+		)
+
+		.showcase__intro.container.container--xs
+			each p in showcase.intro
+				p !{p}
+
+		p#showcase-pills-title.u-sr-only= showcase.a11y.pillsLabel
+
+		.showcase-items
+			each showcaseItem, index in showcase.showcases
+				+showcase-item(showcaseItem, index + 1)

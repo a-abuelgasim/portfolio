@@ -1,0 +1,12 @@
+mixin heading(n, text, classes)
+	- const range = Array.from({ length: 6 }, (_, i) => i + 1);
+
+	.heading(class=classes)
+		h2.heading__text= text
+
+		div.heading__dots
+			each count in range
+				div.heading__dot(
+					class=`heading__dot--${count}`
+					class=count === n && `heading__dot--long`
+				)

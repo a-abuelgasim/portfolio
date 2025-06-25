@@ -1,0 +1,20 @@
+@use 'sass:map';
+@use '../common/constants' as c;
+
+$padding-bottom: map.get(c.$spaces, xl);
+$padding-top: map.get(c.$spaces, lg);
+
+section {
+	background: var(--section-bg);
+	padding: #{$padding-top} 0 #{$padding-bottom};
+
+	&:nth-of-type(odd) {
+		--card-bg-color: var(--color-bg-2);
+		--section-bg: var(--color-bg-1)
+	}
+
+	&:nth-of-type(even) {
+		--card-bg-color: var(--color-bg-1);
+		--section-bg: var(--color-bg-2)
+	}
+}

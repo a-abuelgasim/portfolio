@@ -1,0 +1,27 @@
+@use 'sass:map';
+@use '../common/mixins' as *;
+@use '../common/typography' as type;
+
+.contact {
+	@include bg-rectangles;
+
+	&__rectangle {
+		&--1 {
+			--hero-rectangle-angle: -15deg;
+			--hero-rectangle-top: 80px;
+			--hero-rectangle-left: -160px;
+		}
+
+		&--2 {
+			--hero-rectangle-angle: -60deg;
+			--hero-rectangle-right: -150px;
+			--hero-rectangle-bottom: 100px;
+		}
+	}
+
+	&__card {
+		font-size: map.get(type.$font-sizes, 3);
+		position: relative;
+		z-index: 1;
+	}
+}

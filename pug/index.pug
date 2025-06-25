@@ -1,0 +1,23 @@
+doctype html
+html(lang='en')
+	include includes/head.pug
+
+	body
+		include includes/google-analytics/gtm-body.html
+
+		//- Prevent flash of unstyled content (FOUC) see main.js
+		main(
+				id='main'
+				style='opacity: 0')
+			include includes/sections/hero.pug
+			include includes/sections/profile.pug
+			include includes/sections/skills.pug
+			include includes/sections/showcase.pug
+			include includes/sections/publications.pug
+			include includes/sections/timeline.pug
+			include includes/sections/contact.pug
+			include includes/sections/footer.pug
+
+		script(
+				src='/main.js'
+				type='module')

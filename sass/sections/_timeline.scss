@@ -1,0 +1,171 @@
+@use 'sass:map';
+@use 'sass:math';
+@use '../common/constants' as c;
+@use '../common/mixins' as *;
+@use '../components/container';
+@use '../components/heading';
+@use '../components/section';
+
+
+.timeline {
+	$dot-size: 20px;
+	$line-color: var(--color-secondary);
+	$line-gutter-mobile: map.get(c.$spaces, lg);
+	$line-left: 30px;
+	$line-thickness: 6px;
+	$line-to-card-gap: map.get(c.$spaces, lg);
+	$line-top: 30px;
+	$sticky-dot-radius: 30px;
+	$switch-bp: 800px;
+	$trigger-top: 40vh;
+
+	$line-thickness-half: math.div($line-thickness, 2);
+	$sticky-dot-fixed-top: calc(100vh - #{$trigger-top} + (1 * #{$sticky-dot-radius}));
+
+	--timeline-line-left: #{math.div($line-gutter-mobile, 2) - $line-thickness-half};
+
+	position: relative;
+
+	@include mq($switch-bp) {
+		--timeline-line-left: calc(50% - #{$line-thickness-half});
+	}
+
+	&__container {
+		position: relative;
+
+		@include mq($until: $switch-bp) {
+			padding-left: $line-gutter-mobile;
+		}
+	}
+
+	&__trigger {
+		height: calc(100% - #{$trigger-top} - #{$sticky-dot-fixed-top} + #{section.$padding-bottom} - (#{math.div($sticky-dot-radius, 2)}));
+		position: absolute;
+		top: $trigger-top;
+		z-index: 1;
+	}
+
+	&__sticky-dot {
+		@include box-shadow(2);
+
+		aspect-ratio: 1 / 1;
+		background: var(--color-tertiary);
+		border-radius: 50%;
+		height: $sticky-dot-radius;
+		left: var(--sticky-dot-left, calc(var(--timeline-line-left) + 2px));
+		position: absolute;
+		top: var(--timeline-sticky-dot-top, #{$line-top});
+		transform: translate(-50%, -50%);
+		z-index: 1;
+
+
+		@media (prefers-reduced-motion) {
+			display: none;
+		}
+
+		&--fixed {
+			--timeline-sticky-dot-top: #{$sticky-dot-fixed-top};
+
+			position: fixed;
+
+			@include mq($until: tablet) {
+				--sticky-dot-left: calc(var(--timeline-line-left) + #{container.$side-padding-mobile} + 2px);
+			}
+
+			@include mq($from: tablet, $until: $switch-bp) {
+				--sticky-dot-left: calc(var(--timeline-line-left) + #{container.$side-padding-tablet} + 2px);
+			}
+		}
+
+		&--end {
+			--timeline-sticky-dot-top: auto;
+
+			bottom: -(section.$padding-bottom);
+			position: absolute;
+			transform: translate(-50%, 0);
+		}
+	}
+
+	&__line {
+		background: $line-color;
+		bottom: -#{section.$padding-bottom};
+		left: var(--timeline-line-left);
+		position: absolute;
+		top: $line-top;
+		width: $line-thickness;
+	}
+
+	&__grid {
+		display: grid;
+		gap: var(--timeline-grid-gap, #{map.get(c.$spaces, lg)});
+
+		@include mq($switch-bp) {
+			--timeline-grid-gap: #{$line-to-card-gap ($line-to-card-gap * 2)};
+
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	&__card {
+		align-self: flex-start;
+		grid-row: span var(--timeline-item-row-span, auto);
+		position: relative;
+		transition: background-color .5s ease-in-out, box-shadow .5s ease-in-out;
+
+		&--left {
+			@include mq($switch-bp) {
+				--timeline-item-line-left: calc(100% + 1px);
+				--timeline-item-dot-translate-x: #{$line-to-card-gap - math.div($dot-size, 2)};
+			}
+		}
+
+		&--right {
+			@include mq($switch-bp) {
+				margin-top: map.get(c.$spaces, lg);
+			}
+		}
+
+		&--muted {
+			@media (prefers-reduced-motion: no-preference) {
+				background-color: color-mix(in srgb, var(--card-bg-color) 90%, var(--color-primary));
+				box-shadow: none;
+			}
+		}
+
+		// timeline item line and dot
+		&::after,
+		&::before {
+			--timeline-item-distance-to-line: #{math.div($line-gutter-mobile, 2)};
+
+			content: '';
+			left: var(--timeline-item-line-left, calc(var(--timeline-item-distance-to-line) * -1));
+			position: absolute;
+			top: $line-top;
+
+			@include mq($switch-bp) {
+				--timeline-item-distance-to-line: #{$line-to-card-gap};
+			}
+		}
+
+		// timeline item line
+		&::before {
+			background: $line-color;
+			height: $line-thickness;
+			top: $line-top;
+			transform: translateY(-50%);
+			width: var(--timeline-item-distance-to-line);
+		}
+
+		// timeline item dot
+		&::after {
+			@include box-shadow(1);
+
+			aspect-ratio: 1 / 1;
+			background: $line-color;
+			border-radius: 50%;
+			content: '';
+			transform: translate(var(--timeline-item-dot-translate-x, -50%), -50%);
+			width: $dot-size;
+		}
+	}
+}

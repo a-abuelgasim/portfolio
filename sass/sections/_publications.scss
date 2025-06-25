@@ -1,0 +1,23 @@
+@use 'sass:map';
+@use '../common/constants' as c;
+@use '../common/mixins' as *;
+
+.publications {
+	&__grid {
+		display: grid;
+		gap: map.get(c.$spaces, sm);
+		grid-template-columns: repeat(var(--publications-grid-columns, 1), 1fr);
+
+		@include mq(tablet) {
+			--publications-grid-columns: 2;
+		}
+
+		@include mq(desktop) {
+			--publications-grid-columns: 3;
+		}
+
+		@include mq(1200px) {
+			--publications-grid-columns: 4;
+		}
+	}
+}

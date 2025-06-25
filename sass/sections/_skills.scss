@@ -1,0 +1,56 @@
+@use 'sass:map';
+@use '../common/constants' as c;
+@use '../common/mixins' as *;
+@use '../components/card';
+@use '../components/container';
+
+
+.skills {
+	&__grid {
+		&-container {
+			display: grid;
+			justify-items: center;
+		}
+
+		display: grid;
+		gap: var(--skills-gap, 30px);
+		grid-template-columns: var(--skills-grid-template-columns);
+
+		@include mq(414px) {
+			--skills-grid-template-columns: repeat(2, minmax(0, 300px));
+		}
+
+		@include mq(desktop) {
+			--skills-grid-template-columns: repeat(4, minmax(0, 1fr));
+		}
+	}
+
+	&__card {
+		&-heading {
+			align-items: center;
+			display: flex;
+			height: card.$heading-line-height * 2;
+			justify-content: center;
+			text-align: center;
+		}
+	}
+
+	&__list-item {
+		align-items: center;
+		display: flex;
+		font-weight: 600;
+		gap: 1em;
+		white-space: nowrap;
+
+		&:not(:last-of-type) {
+			margin-bottom: map.get(c.$spaces, xs);
+		}
+
+		&-icon {
+			$size: 1.75em;
+
+			flex-shrink: 0;
+			width: $size;
+		}
+	}
+}
