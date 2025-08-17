@@ -4,20 +4,6 @@
 
 
 .showcase {
-	&__intro {
-		p {
-			margin-bottom: var(--showcase-intro-p-margin-bottom);
-
-			&:not(last-of-type) {
-				--showcase-intro-p-margin-bottom: #{map.get(c.$spaces, xs)};
-			}
-
-			&:last-of-type {
-				--showcase-intro-p-margin-bottom: #{map.get(c.$spaces, xl)};
-			}
-		}
-	}
-
 	&-items {
 		display: grid;
 		gap: 175px;
